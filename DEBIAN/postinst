@@ -4,6 +4,11 @@ chmod 644 /usr/lib/systemd/system/makerbase-automount@.service
 chmod 644 /etc/makerbase-automount.d/*
 chmod 777 /usr/bin/makerbase-automount
 chmod 777 /usr/bin/umount_dmenu
+systemctl stop moonraker.service
+rm /home/mks/printer_data/database/data.mdb 
+systemctl start moonraker.service
+
+useradd -d /home/sovol -g netdev -m sovol
 
 chmod 777 /root/auto_refresh
 chgrp netdev /home/mks/ -R

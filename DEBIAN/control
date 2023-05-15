@@ -1,8 +1,8 @@
-Package: Makerbase-Client
-Version: 1.0.4
+Package: Sovol-deb-update
+Version: 1.0.5
 Architecture: arm64
-Uploaders: Makerbase
-Maintainer: Makerbase
+Uploaders: sovol
+Maintainer: sovol
 Section: devel
 Essential: no
-Description: update the printer.cfg and update page
+Description: update the printer.cfg and update page, and combine the modification from sovol
