@@ -1,0 +1,8 @@
+Package: Makerbase-Client
+Version: 1.0.4
+Architecture: arm64
+Uploaders: Makerbase
+Maintainer: Makerbase
+Section: devel
+Essential: no
+Description: update the printer.cfg and update page

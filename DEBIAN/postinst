@@ -1,0 +1,13 @@
+#! /bin/bash
+chmod 644 /usr/lib/udev/rules.d/99-makerbase-automount.rules
+chmod 644 /usr/lib/systemd/system/makerbase-automount@.service
+chmod 644 /etc/makerbase-automount.d/*
+chmod 777 /usr/bin/makerbase-automount
+chmod 777 /usr/bin/umount_dmenu
+
+chmod 777 /root/auto_refresh
+chgrp netdev /home/mks/ -R
+chown mks /home/mks/ -R
+
+
+

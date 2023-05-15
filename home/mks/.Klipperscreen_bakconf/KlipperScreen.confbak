@@ -1,0 +1,24 @@
+[preheat PLA]
+bed = 40
+extruder = 195
+
+[preheat ABS]
+bed = 90
+extruder = 220
+
+
+[preheat cooldown]
+gcode: M106 S255
+[main]
+confirm_estop = True
+language = en
+use_dpms = False
+
+#~# --- Do not edit below this line. This section is auto generated --- #~#
+#~#
+#~# [main]
+#~# language = en
+#~# confirm_estop = True
+#~# wizard_tag = True
+#~#
+
