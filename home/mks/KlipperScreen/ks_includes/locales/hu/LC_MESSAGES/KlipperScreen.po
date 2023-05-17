@@ -815,6 +815,30 @@ msgstr "Újraindít"
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Kattintson a Confirm will factory reset and reboot (Erősítse meg, hogy visszaállítja a gyári beállításokat) gombra?"
 
+msgid "Bed"
+msgstr "Ágy"
+
+msgid "Extruder"
+msgstr "Extruder"
+
+msgid "Sure"
+msgstr "Biztos"
+
+msgid "Software Version"
+msgstr "Szoftver verzió"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Nem észlelhető frissítési csomag, ellenőrizze, hogy a KliPAD.deb fájl létezik-e!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Frissítési csomag verziója, győződjön meg arról, hogy a frissítési csomag a legújabb verzió!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "A frissítőcsomag készen áll, frissíteni szeretné? A rendszer újraindul a frissítés befejezése után..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Kérjük, várja meg az újraindítást, amíg a frissítőcsomag telepítve van..."
+
 #~ msgid "Sort:"
 #~ msgstr "Fajta:"
 

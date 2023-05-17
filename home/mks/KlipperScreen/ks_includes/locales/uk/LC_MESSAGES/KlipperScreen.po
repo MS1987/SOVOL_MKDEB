@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 2022-09-04 14:53-0300\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:08+0800\n"
+"PO-Revision-Date: 2023-05-16 15:56+0800\n"
 "Last-Translator: Andrii Komarovskyi\n"
 "Language-Team: Andrii Komarovskyi\n"
 "Language: uk\n"
@@ -447,7 +447,7 @@ msgid "Network"
 msgstr "Сітка"
 
 msgid "Never"
-msgstr "Ніколи."
+msgstr "Ніколи"
 
 msgid "New"
 msgstr "Новий"
@@ -575,7 +575,7 @@ msgid "Retraction Speed"
 msgstr "Швидкість втягування"
 
 msgid "Retry"
-msgstr "Спробуйте ще раз."
+msgstr "Спробуйте ще раз"
 
 msgid "Retrying"
 msgstr "Повторна спроба"
@@ -832,6 +832,30 @@ msgstr "Перезавантаження"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Натисніть Підтвердити, чи скине заводські налаштування та перезавантажите, ви хочете скинути заводські налаштування?"
+
+msgid "Bed"
+msgstr "Ліжко"
+
+msgid "Extruder"
+msgstr "Екструдер"
+
+msgid "Sure"
+msgstr "Звісно"
+
+msgid "Software Version"
+msgstr "Версія програмного забезпечення"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Не виявлено пакет оновлень, переконайтеся, що файл KliPAD.deb існує!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Виняток щодо версії пакету оновлень, будь ласка, переконайтеся, що пакет оновлень має останню версію!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete."
+msgstr "Пакет оновлень готовий, ви хочете оновитися? Система перезавантажиться після завершення оновлення."
+
+msgid "Please wait for a reboot while the update package is installed."
+msgstr "Будь ласка, зачекайте на перезавантаження під час встановлення пакету оновлень."
 
 #~ msgid "Sort:"
 #~ msgstr "Сортувати:"

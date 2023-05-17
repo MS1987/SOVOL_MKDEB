@@ -813,6 +813,30 @@ msgstr "Genstarte"
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Klik på Bekræft nulstilling og genstart af fabrikken, vil du nulstille fabrikken?"
 
+msgid "Bed"
+msgstr "Seng"
+
+msgid "Extruder"
+msgstr "Ekstruder"
+
+msgid "Sure"
+msgstr "Sikker"
+
+msgid "Software Version"
+msgstr "Softwareversion"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Der blev ikke fundet nogen opdateringspakke, skal du kontrollere, at filen KliPAD.deb findes!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Undtagelse for opdateringspakkeversion, skal du sørge for, at opdateringspakken er den nyeste version!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Opdateringspakken er klar, vil du opdatere? Systemet genstarter, når opdateringen er fuldført..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Vent på en genstart, mens opdateringspakken er installeret..."
+
 #~ msgid "Sort:"
 #~ msgstr "Sortere: "
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:05+0800\n"
+"PO-Revision-Date: 2023-05-16 14:39+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -98,9 +98,6 @@ msgstr "热床网格"
 
 msgid "Bed screw configuration:"
 msgstr "床位螺钉配置："
-
-msgid "Bed"
-msgstr "热床"
 
 msgid "Calibrate"
 msgstr "校准"
@@ -213,9 +210,6 @@ msgid "Extra Large"
 msgstr "特大号"
 
 msgid "Extrude"
-msgstr "挤出机"
-
-msgid "Extruder"
 msgstr "挤出机"
 
 msgid "Extrusion +"
@@ -820,6 +814,30 @@ msgstr "重新启动"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "点击确认将恢复出厂设置并重新启动，是否要恢复出厂设置？"
+
+msgid "Bed"
+msgstr "热床"
+
+msgid "Extruder"
+msgstr "挤出机"
+
+msgid "Sure"
+msgstr "确定"
+
+msgid "Software Version"
+msgstr "软件版本"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "检测不到更新包，请确保存在KliPAD.deb文件！！！"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "更新包版本异常，请确保更新包为最新版本！！！"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "更新包已准备，是否进行更新？更新结束后系统将会重启..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "安装更新包中，请等待重启..."
 
 #~ msgid "Sort:"
 #~ msgstr "排序:"

@@ -1,5 +1,6 @@
 import logging
 import os
+import subprocess
 
 import gi
 
@@ -35,9 +36,21 @@ class SystemPanel(ScreenPanel):
         grid = self._gtk.HomogeneousGrid()
         grid.set_row_homogeneous(False)
 
-        update_all = self._gtk.Button('arrow-up', _('Full Update'), 'color1')
-        update_all.connect("clicked", self.show_update_info, "full")
-        update_all.set_vexpand(False)
+        software_ver = Gtk.Label()
+        software_ver.set_size_request(400, 110)
+        software_ver.set_line_wrap(True)
+        if os.path.isfile('/home/mks/.DebVersion'):
+            with open('/home/mks/.DebVersion', 'r') as f:
+                text = f.read()
+        else:
+            text = "--"
+        text = "Current host version: " + text
+        software_ver.set_text(text)
+
+        update = self._gtk.Button('arrow-up', _('Update'), 'color1')
+        update.connect("clicked", self.show_update_info, "USB_DEB")
+        update.set_vexpand(False)
+
         self.refresh = self._gtk.Button('refresh', _('Restore factory'), 'color2')
         self.refresh.connect("clicked", self.reset_cfg_button, "reset_cfg")
         self.refresh.set_vexpand(False)
@@ -104,18 +117,19 @@ class SystemPanel(ScreenPanel):
         box5.hide()
         box6.hide()
         box7.hide()
-        grid.attach(box0, 0, 0, 1, 1)
-        grid.attach(box1, 1, 0, 1, 1)
-        grid.attach(box2, 2, 0, 1, 1)
-        grid.attach(box3, 3, 0, 1, 1)
-        grid.attach(update_all, 0, 1, 1, 1)
-        grid.attach(self.refresh, 1, 1, 1, 1)
-        grid.attach(reboot, 2, 1, 1, 1)
-        grid.attach(shutdown, 3, 1, 1, 1)
-        grid.attach(box4, 0, 2, 1, 1)
-        grid.attach(box5, 1, 2, 1, 1)
-        grid.attach(box6, 2, 2, 1, 1)
-        grid.attach(box7, 3, 2, 1, 1)
+        grid.attach(software_ver, 0, 0, 4, 1)
+        grid.attach(box0, 0, 1, 1, 1)
+        grid.attach(box1, 1, 1, 1, 1)
+        grid.attach(box2, 2, 1, 1, 1)
+        grid.attach(box3, 3, 1, 1, 1)
+        grid.attach(update, 0, 2, 1, 1)
+        grid.attach(self.refresh, 1, 2, 1, 1)
+        grid.attach(reboot, 2, 2, 1, 1)
+        grid.attach(shutdown, 3, 2, 1, 1)
+        grid.attach(box4, 0, 3, 1, 1)
+        grid.attach(box5, 1, 3, 1, 1)
+        grid.attach(box6, 2, 3, 1, 1)
+        grid.attach(box7, 3, 3, 1, 1)
         self.content.add(grid)
 
     def activate(self):
@@ -146,15 +160,12 @@ class SystemPanel(ScreenPanel):
                 bakconf_dir_screen = "/home/mks/.Klipperscreen_bakconf/KlipperScreen.confbak"
                 bakconf_dir_printer = "/home/mks/.Klipperscreen_bakconf/printer.cfgbak"
                 current_conf_path = self._screen._config.config_path
-                logging.info(f"{current_conf_path}")
                 if os.path.isfile(bakconf_dir_printer) :
-                    logging.info(f"printer.cfg")
                     with open(bakconf_dir_printer, 'rb') as f:
                         data = f.read()
                     with open('/home/mks/printer_data/config/printer.cfg', 'wb') as f:
                         f.write(data)
                 if os.path.isfile(bakconf_dir_screen) :
-                    logging.info(f"KlipperScreen---")
                     with open(bakconf_dir_screen, 'rb') as f:
                         data = f.read()
                     with open(current_conf_path, 'wb') as f:
@@ -191,7 +202,40 @@ class SystemPanel(ScreenPanel):
         self._screen._ws.send_method("machine.services.restart", {"service": program})
 
     def show_update_info(self, widget, program):
-        logging.info(f"func dev")
+        path_to_klipad_deb = "/home/mks/printer_data/gcodes/USB/KliPAD.deb"
+        if os.path.isfile(path_to_klipad_deb):
+            try:
+                output = subprocess.check_output(["dpkg", "-f", path_to_klipad_deb, "Version"])
+                version = output.decode().strip()
+            except subprocess.CalledProcessError:
+                version = ""
+            logging.info(f"{version}")
+            if version:
+                scroll = self._gtk.ScrolledWindow()
+                scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+                vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+                vbox.set_halign(Gtk.Align.CENTER)
+                vbox.set_valign(Gtk.Align.CENTER)
+                label = Gtk.Label(label="检测到更新包，点击确认安装更新包并重启")
+                label.set_line_wrap(True)
+                ver_label = Gtk.Label(label= "软件版本：" + version)
+                ver_label.set_line_wrap(True)
+                vbox.add(label)
+                vbox.add(ver_label)
+                scroll.add(vbox)
+                buttons = [
+                    {"name": _("Accept"), "response": Gtk.ResponseType.OK},
+                    {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL}
+                ]
+                method = program
+                dialog = self._gtk.Dialog(self._screen, buttons, scroll, self.update_confirm, method)
+                dialog.set_title(_("Update"))
+            else:
+                self._screen.show_popup_message("检测到更新包但版本号异常，请检查更新包", level=2)
+                GLib.timeout_add_seconds(5, self._screen.close_popup_message)
+        else:
+            self._screen.show_popup_message("检测不到更新包，请确认更新包名称或路径是否正确", level=2)
+            GLib.timeout_add_seconds(5, self._screen.close_popup_message)
     #     info = self.update_status['version_info'][program] if program in self.update_status['version_info'] else {}
 
     #     scroll = self._gtk.ScrolledWindow()
@@ -285,10 +329,17 @@ class SystemPanel(ScreenPanel):
     #     dialog.set_title(_("Update"))
 
     def update_confirm(self, dialog, response_id, program):
-        self._gtk.remove_dialog(dialog)
+        if response_id == Gtk.ResponseType.CANCEL:
+            self._gtk.remove_dialog(dialog)
+        # if response_id == Gtk.ResponseType.OK:
+        #     logging.debug(f"Updating {program}")
+        #     self.update_program(self, program)
         if response_id == Gtk.ResponseType.OK:
-            logging.debug(f"Updating {program}")
-            self.update_program(self, program)
+            if program == "USB_DEB" :
+                os.system("cp /home/mks/printer_data/gcodes/USB/KliPAD.deb /home/mks/armbian-update.deb")
+            self._gtk.remove_dialog(dialog)
+            self._screen.show_popup_message(_("Updating")+"...", level=1)
+            GLib.timeout_add_seconds(20, self._screen.close_popup_message)
 
     def reset_confirm(self, dialog, response_id, program):
         self._gtk.remove_dialog(dialog)
@@ -309,27 +360,28 @@ class SystemPanel(ScreenPanel):
         logging.info(f"Sending machine.update.recover name: {program} hard: {hard}")
         self._screen._ws.send_method("machine.update.recover", {"name": program, "hard": hard})
 
-    def update_program(self, widget, program):
-        if self._screen.updating or not self.update_status:
-            return
+    # def update_program(self, widget, program):
 
-        if program in self.update_status['version_info']:
-            info = self.update_status['version_info'][program]
-            logging.info(f"program: {info}")
-            if "package_count" in info and info['package_count'] == 0 \
-                    or "version" in info and info['version'] == info['remote_version']:
-                return
-        self._screen.base_panel.show_update_dialog()
-        msg = _("Updating") if program == "full" else _("Starting update for") + f' {program}...'
-        self._screen._websocket_callback("notify_update_response",
-                                         {'application': {program}, 'message': msg, 'complete': False})
+        # if self._screen.updating or not self.update_status:
+        #     return
 
-        if program in ['klipper', 'moonraker', 'system', 'full']:
-            logging.info(f"Sending machine.update.{program}")
-            self._screen._ws.send_method(f"machine.update.{program}")
-        else:
-            logging.info(f"Sending machine.update.client name: {program}")
-            self._screen._ws.send_method("machine.update.client", {"name": program})
+        # if program in self.update_status['version_info']:
+        #     info = self.update_status['version_info'][program]
+        #     logging.info(f"program: {info}")
+        #     if "package_count" in info and info['package_count'] == 0 \
+        #             or "version" in info and info['version'] == info['remote_version']:
+        #         return
+        # self._screen.base_panel.show_update_dialog()
+        # msg = _("Updating") if program == "full" else _("Starting update for") + f' {program}...'
+        # self._screen._websocket_callback("notify_update_response",
+        #                                  {'application': {program}, 'message': msg, 'complete': False})
+
+        # if program in ['klipper', 'moonraker', 'system', 'full']:
+        #     logging.info(f"Sending machine.update.{program}")
+        #     self._screen._ws.send_method(f"machine.update.{program}")
+        # else:
+        #     logging.info(f"Sending machine.update.client name: {program}")
+        #     self._screen._ws.send_method("machine.update.client", {"name": program})
 
     def update_program_info(self, p):
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:35+0800\n"
+"PO-Revision-Date: 2023-05-16 15:22+0800\n"
 "Last-Translator: O. Robardet\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -814,6 +814,30 @@ msgstr "Redémarrer"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Cliquez sur Confirmer la réinitialisation d’usine et le redémarrage, voulez-vous réinitialiser les paramètres d’usine?"
+
+msgid "Bed"
+msgstr "Lit"
+
+msgid "Extruder"
+msgstr "Extrudeuse"
+
+msgid "Sure"
+msgstr "Sûr"
+
+msgid "Software Version"
+msgstr "Version du logiciel"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Aucun package de mise à jour détecté, assurez-vous que le fichier KliPAD.deb existe!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Exception de version du package de mise à jour, assurez-vous que le package de mise à jour est la dernière version!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Le package de mise à jour est prêt, voulez-vous le mettre à jour ? Le système redémarrera une fois la mise à jour terminée..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Veuillez attendre un redémarrage pendant que le package de mise à jour est installé..."
 
 #~ msgid "Sort:"
 #~ msgstr "Trier:"

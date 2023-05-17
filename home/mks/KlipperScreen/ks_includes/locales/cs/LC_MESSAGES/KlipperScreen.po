@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Czech\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-29 09:28-0600\n"
-"PO-Revision-Date: 2023-05-11 19:43+0800\n"
+"PO-Revision-Date: 2023-05-16 15:07+0800\n"
 "Last-Translator: \n"
 "Language-Team: Jan Stanka (stanky@email.cz)\n"
 "Language: cs\n"
@@ -822,6 +822,30 @@ msgstr "Restartovat"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Klikněte na Potvrdit obnovení továrního nastavení a restartování, chcete obnovit tovární nastavení?"
+
+msgid "Bed"
+msgstr "Postel"
+
+msgid "Extruder"
+msgstr "Extruder"
+
+msgid "Sure"
+msgstr "Jistý"
+
+msgid "Software Version"
+msgstr "Verze softwaru"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Nebyl zjištěn žádný balíček aktualizace, ujistěte se, že existuje soubor KliPAD.deb!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Výjimka verze balíčku aktualizace, ujistěte se, že balíček aktualizace je nejnovější verze!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Aktualizační balíček je připraven, chcete aktualizovat? Systém se po dokončení aktualizace restartuje..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Počkejte prosím na restart, než je nainstalován balíček aktualizace..."
 
 #~ msgid "Decrease"
 #~ msgstr "Snížit"

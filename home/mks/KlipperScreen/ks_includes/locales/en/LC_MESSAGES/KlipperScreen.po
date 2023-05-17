@@ -814,3 +814,27 @@ msgstr ""
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr ""
+
+msgid "Bed"
+msgstr ""
+
+msgid "Extruder"
+msgstr ""
+
+msgid "Sure"
+msgstr ""
+
+msgid "Software Version"
+msgstr ""
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr ""
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr ""
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr ""
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr ""

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:20+0800\n"
+"PO-Revision-Date: 2023-05-16 15:49+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -817,6 +817,30 @@ msgstr "Reinicialização"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Clique em Confirmar será redefinido e reiniciado de fábrica, você deseja redefinir a fábrica?"
+
+msgid "Bed"
+msgstr "Cama"
+
+msgid "Extruder"
+msgstr "Extrusora"
+
+msgid "Sure"
+msgstr "Com certeza"
+
+msgid "Software Version"
+msgstr "Versão do software"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Nenhum pacote de atualização detetado, verifique se o arquivo KliPAD.deb existe!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Exceção da versão do pacote de atualização, certifique-se de que o pacote de atualização é a versão mais recente!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "O pacote de atualização está pronto, você deseja atualizar? O sistema será reiniciado após a conclusão da atualização..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Aguarde uma reinicialização enquanto o pacote de atualização está instalado..."
 
 #~ msgid "Sort:"
 #~ msgstr "Ordenar:"

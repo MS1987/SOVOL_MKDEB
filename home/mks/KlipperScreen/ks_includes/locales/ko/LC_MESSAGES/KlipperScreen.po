@@ -808,7 +808,31 @@ msgid "Reboot"
 msgstr "재부팅"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
-msgstr "확인을 클릭하면 공장 초기화 및 다시 시작됩니다."
+msgstr "확인을 클릭하면 공장 초기화 및 다시 시작됩니다?"
+
+msgid "Bed"
+msgstr "침대"
+
+msgid "Extruder"
+msgstr "압출 기"
+
+msgid "Sure"
+msgstr "물론"
+
+msgid "Software Version"
+msgstr "소프트웨어 버전"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "업데이트 패키지가 검색되지 않으면 KliPAD.deb 파일이 있는지 확인하십시오!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "업데이트 패키지 버전 예외, 업데이트 패키지가 최신 버전인지 확인하십시오!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "업데이트 패키지가 준비되었는데 업데이트하시겠습니까? 업데이트가 완료되면 시스템이 재부팅됩니다..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "업데이트 패키지가 설치 되는 동안 다시 부팅 할 때까지 기다려 주세요 ..."
 
 #~ msgid "Sort:"
 #~ msgstr "종류:"

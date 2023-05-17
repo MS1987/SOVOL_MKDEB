@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Klipperscreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:33+0800\n"
+"PO-Revision-Date: 2023-05-16 15:24+0800\n"
 "Last-Translator: Tal Rahav <talrhv1@gmail.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -824,6 +824,30 @@ msgstr "אתחול מחדש"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "לחץ על אשר יבצע איפוס והפעלה מחדש של היצרן, האם ברצונך לבצע איפוס להגדרות היצרן?"
+
+msgid "Bed"
+msgstr "מיטה"
+
+msgid "Extruder"
+msgstr "מכבש"
+
+msgid "Sure"
+msgstr "בטוח"
+
+msgid "Software Version"
+msgstr "גרסת התוכנה"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "לא זוהתה חבילת עדכון, ודא שהקובץ .deb KliPAD קיים!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "חריג בגירסת חבילת העדכון, ודא שחבילת העדכון היא הגירסה העדכנית ביותר!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "חבילת העדכון מוכנה, האם ברצונך לעדכן? המערכת תאותחל מחדש לאחר השלמת העדכון..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "המתן לאתחול מחדש בזמן שחבילת העדכון מותקנת..."
 
 #~ msgid "Sort:"
 #~ msgstr "מיין"

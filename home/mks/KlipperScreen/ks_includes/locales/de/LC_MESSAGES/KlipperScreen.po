@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:40+0800\n"
+"PO-Revision-Date: 2023-05-16 15:11+0800\n"
 "Last-Translator: livinhack\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -823,6 +823,32 @@ msgid "Click Confirm will factory reset and restart, do you want to factory rese
 msgstr ""
 "Klicken Sie auf Bestätigen, dass die Werkseinstellungen zurückgesetzt und neu gestartet werden, möchten Sie die "
 "Werkseinstellungen zurücksetzen?"
+
+msgid "Bed"
+msgstr "Bett"
+
+msgid "Extruder"
+msgstr "Extruder"
+
+msgid "Sure"
+msgstr "Sicher"
+
+msgid "Software Version"
+msgstr "Software-Version"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Es wurde kein Update-Paket erkannt, stellen Sie sicher, dass die Datei KliPAD.deb vorhanden ist!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr ""
+"Ausnahme für die Update-Paketversion, stellen Sie sicher, dass es sich bei dem Update-Paket um die neueste Version "
+"handelt!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Das Update-Paket ist fertig, möchten Sie updaten? Das System wird nach Abschluss des Updates neu gestartet..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Bitte warten Sie auf einen Neustart, während das Update-Paket installiert ist..."
 
 #~ msgid "Sort:"
 #~ msgstr "Sortieren:"

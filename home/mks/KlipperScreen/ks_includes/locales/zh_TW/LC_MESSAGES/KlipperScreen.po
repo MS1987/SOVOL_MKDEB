@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-11 19:03+0800\n"
+"PO-Revision-Date: 2023-05-16 14:37+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -814,6 +814,30 @@ msgstr "重新啟動"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "點擊確認將恢復出廠設置並重新啟動，是否要恢復出廠設置？"
+
+msgid "Bed"
+msgstr "熱床"
+
+msgid "Extruder"
+msgstr "擠出機"
+
+msgid "Sure"
+msgstr "確定"
+
+msgid "Software Version"
+msgstr "軟體版本"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "檢測不到更新包，請確保存在KliPAD.deb檔案！！！"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "更新包版本异常，請確保更新包為最新版本！！！"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "更新包已準備，是否進行更新？ 更新結束後系統將會重啓..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "安裝更新包中，請等待重啓..."
 
 #~ msgid "Z+"
 #~ msgstr "Z+"

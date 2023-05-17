@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-29 09:28-0600\n"
-"PO-Revision-Date: 2023-05-11 19:19+0800\n"
+"PO-Revision-Date: 2023-05-16 15:54+0800\n"
 "Last-Translator: Jakob Kais <schpuntik@freenet.de>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -824,6 +824,30 @@ msgstr "Перезагрузить"
 
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Нажмите «Подтвердить», сбросит заводские настройки и перезагрузится, вы хотите восстановить заводские настройки?"
+
+msgid "Bed"
+msgstr "Кровать"
+
+msgid "Extruder"
+msgstr "Экструдер"
+
+msgid "Sure"
+msgstr "Уверенный"
+
+msgid "Software Version"
+msgstr "Версия программного обеспечения"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Пакет обновления не обнаружен, убедитесь, что файл KliPAD.deb существует!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "Исключение версии пакета обновления, убедитесь, что пакет обновления является последней версией!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Пакет обновлений готов, хотите обновить? Система перезагрузится после завершения обновления..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Пожалуйста, дождитесь перезагрузки, пока пакет обновлений установлен..."
 
 #~ msgid "Decrease"
 #~ msgstr "Уменьшить"

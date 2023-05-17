@@ -810,5 +810,29 @@ msgstr "リブート"
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "[工場出荷時の状態にリセットして再起動することを確認する]をクリックしますが、出荷時設定にリセットしますか?"
 
+msgid "Bed"
+msgstr "ベッド"
+
+msgid "Extruder"
+msgstr "押 出 機"
+
+msgid "Sure"
+msgstr "もちろん"
+
+msgid "Software Version"
+msgstr "ソフトウェアバージョン"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "更新プログラム パッケージが検出されませんでした。KliPAD.deb ファイルが存在することを確認してください!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr "更新プログラム パッケージのバージョンの例外は、更新プログラム パッケージが最新バージョンであることを確認してください!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "更新プログラム パッケージの準備ができました。更新しますか?更新が完了すると、システムが再起動します..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "アップデートパッケージがインストールされている間、再起動をお待ちください..."
+
 #~ msgid "Sort:"
 #~ msgstr "ソート順:"

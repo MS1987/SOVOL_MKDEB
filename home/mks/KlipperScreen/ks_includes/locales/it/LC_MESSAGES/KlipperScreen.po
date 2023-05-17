@@ -815,6 +815,32 @@ msgstr "Riavviare"
 msgid "Click Confirm will factory reset and restart, do you want to factory reset?"
 msgstr "Fare clic su Conferma verrà ripristinato e riavviato, si desidera ripristinare le impostazioni di fabbrica?"
 
+msgid "Bed"
+msgstr "Letto"
+
+msgid "Extruder"
+msgstr "Estrusore"
+
+msgid "Sure"
+msgstr "Sicuro"
+
+msgid "Software Version"
+msgstr "Software Version"
+
+msgid "No update package detected, make sure the KliPAD.deb file exists!!!"
+msgstr "Nessun pacchetto di aggiornamento rilevato, assicurarsi che il file KliPAD.deb esista!!!"
+
+msgid "Update package version exception, please make sure the update package is the latest version!!!"
+msgstr ""
+"Eccezione della versione del pacchetto di aggiornamento, assicurarsi che il pacchetto di aggiornamento sia la versione più "
+"recente!!!"
+
+msgid "The update package is ready, do you want to update? The system will reboot after the update is complete..."
+msgstr "Il pacchetto di aggiornamento è pronto, vuoi aggiornarlo? Il sistema si riavvierà al termine dell'aggiornamento..."
+
+msgid "Please wait for a reboot while the update package is installed..."
+msgstr "Attendere un riavvio durante l'installazione del pacchetto di aggiornamento..."
+
 #~ msgid "Sort:"
 #~ msgstr "Ordinare:"
 
