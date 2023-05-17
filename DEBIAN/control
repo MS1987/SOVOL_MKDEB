@@ -1,8 +1,8 @@
 Package: Sovol-deb-update
-Version: 1.0.9.test2
+Version: 1.0.10
 Architecture: arm64
 Uploaders: sovol
 Maintainer: sovol
 Section: devel
 Essential: no
-Description: 1. Update printer.cfg file.
+Description: 1. Copy printer.cfg file to backup
