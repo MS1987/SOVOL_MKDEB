@@ -1,5 +1,5 @@
 Package: Sovol-deb-update
-Version: 1.0.9
+Version: 1.0.9.test2
 Architecture: arm64
 Uploaders: sovol
 Maintainer: sovol

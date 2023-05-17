@@ -5,10 +5,15 @@ chmod 644 /etc/makerbase-automount.d/*
 chmod 777 /usr/bin/makerbase-automount
 chmod 777 /usr/bin/umount_dmenu
 systemctl stop moonraker.service
-rm /home/mks/printer_data/database/data.mdb 
+if [ -f /home/mks/printer_data/database/data.mdb ]; then rm /home/mks/printer_data/database/data.mdb; fi
 systemctl start moonraker.service
 
-useradd -d /home/sovol -g netdev -m sovol
+USERNAME=sovol
+if id -u ${USERNAME} >/dev/null 2>&1 ; then
+    echo "User ${USERNAME} exists."
+else
+    useradd -d /home/sovol -g netdev -m sovol
+fi
 
 chmod 777 /root/auto_refresh
 chgrp netdev /home/mks/ -R
