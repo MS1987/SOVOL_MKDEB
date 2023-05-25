@@ -5,4 +5,4 @@ Uploaders: sovol
 Maintainer: sovol
 Section: devel
 Essential: no
-Description: 1. Change kernel driver to remove pwrkey,install the kernel deb from the auto_fresh
+Description: 1. Change kernel driver to remove pwrkey,install the kernel deb from the shell
