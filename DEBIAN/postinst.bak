@@ -8,8 +8,8 @@ systemctl stop moonraker.service
 if [ -f /home/mks/printer_data/database/data.mdb ]; then rm /home/mks/printer_data/database/data.mdb; fi
 systemctl start moonraker.service
 
-if [ -d "/root/system_deb/" ]; then
-    for file in /root/system_deb/*.deb
+if [ -d "/root/system_debs/" ]; then
+    for file in /root/system_debs/*.deb
     do
         dpkg -i "$file"
         rm "$file"
