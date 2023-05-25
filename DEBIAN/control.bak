@@ -1,0 +1,8 @@
+Package: Sovol-deb-update
+Version: 1.0.12
+Architecture: arm64
+Uploaders: sovol
+Maintainer: sovol
+Section: devel
+Essential: no
+Description: 1. Change kernel driver to remove pwrkey
