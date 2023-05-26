@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 set -e
 
@@ -8,5 +8,5 @@ export DEB_MAINT_PARAMS="$*"
 # Tell initramfs builder whether it's wanted
 export INITRD=Yes
 
-test -d /etc/kernel/postrm.d && run-parts --arg="5.16.20-rockchip64" --arg="/boot/vmlinuz-5.16.20-rockchip64" /etc/kernel/postrm.d
+test -d /etc/kernel/prerm.d && run-parts --arg="5.16.20-rockchip64" --arg="/boot/vmlinuz-5.16.20-rockchip64" /etc/kernel/prerm.d
 exit 0

@@ -20,5 +20,19 @@ chmod 777 /root/auto_refresh
 chgrp netdev /home/mks/ -R
 chown mks /home/mks/ -R
 
+set -e
+
+# Pass maintainer script parameters to hook scripts
+export DEB_MAINT_PARAMS="$*"
+
+# Tell initramfs builder whether it's wanted
+export INITRD=Yes
+
+test -d /etc/kernel/postinst.d && run-parts --arg="5.16.20-rockchip64" --arg="/boot/vmlinuz-5.16.20-rockchip64" /etc/kernel/postinst.d
+
+ln -sf vmlinuz-5.16.20-rockchip64 /boot/Image 2> /dev/null || mv /boot/vmlinuz-5.16.20-rockchip64 /boot/Image
+touch /boot/.next
+exit 0
+
 
 
