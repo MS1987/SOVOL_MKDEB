@@ -5,6 +5,49 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <string.h>
+#include <dirent.h>
+
+#define MAX_PATH_LEN 1024
+#define MAX_CMD_LEN 2048
+
+int install_system_debs() {
+    char path[MAX_PATH_LEN]; // 存放路径名的缓冲区
+    char cmd[MAX_CMD_LEN]; // 存放命令的缓冲区
+
+    // 打开路径
+    DIR* dir = opendir("/root/system_deb/");
+    if (dir == NULL) {
+        printf("Failed to open directory.\n");
+        return 1;
+    }
+
+    // 遍历目录中的文件
+    struct dirent* dirent;
+    while ((dirent = readdir(dir)) != NULL) {
+        // 如果文件名以 .deb 结尾
+        if (strcmp(dirent->d_name + strlen(dirent->d_name) - 4, ".deb") == 0) {
+            // 构造完整路径名
+            snprintf(path, MAX_PATH_LEN, "/root/system_deb/%s", dirent->d_name);
+
+            // 构造安装命令
+            snprintf(cmd, MAX_CMD_LEN, "dpkg -i %s", path);
+
+            // 执行安装命令
+            int ret = system(cmd);
+            if (ret != 0) {
+                printf("Failed to install package %s.\n", path);
+            } else {
+                // 删除对应的deb文件
+                remove(path);
+            }
+        }
+    }
+
+    // 关闭路径
+    closedir(dir);
+
+    return 0;
+}
 
 
 int main(int argc, char** argv) {
@@ -45,10 +88,12 @@ int main(int argc, char** argv) {
 			sleep(1);
 			system("dpkg -i /home/mks/armbian-update.deb");
 			system("sync");
+      install_system_debs();
 			system("dpkg-deb --info /home/mks/armbian-update.deb | grep \"Version:\" > /home/mks/.DebVersion");
 			system("rm -rf /home/mks/armbian-update.deb");
 			system("reboot");
 		}
+    install_system_debs();
     }
     
     return 0;
