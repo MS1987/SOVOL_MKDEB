@@ -13,6 +13,7 @@
 int install_system_debs() {
     char path[MAX_PATH_LEN]; // 存放路径名的缓冲区
     char cmd[MAX_CMD_LEN]; // 存放命令的缓冲区
+    int find_debs = 0;
 
     // 打开路径
     DIR* dir = opendir("/root/system_deb/");
@@ -40,13 +41,14 @@ int install_system_debs() {
                 // 删除对应的deb文件
                 remove(path);
             }
+            find_debs = 1;
         }
     }
 
     // 关闭路径
     closedir(dir);
 
-    return 0;
+    return find_debs;
 }
 
 
@@ -86,14 +88,18 @@ int main(int argc, char** argv) {
 		if(access("/home/mks/armbian-update.deb", F_OK) == 0)
 		{
 			sleep(1);
-			system("dpkg -i /home/mks/armbian-update.deb");
-			system("sync");
+			system("dpkg -i /home/mks/armbian-update.deb");			
       install_system_debs();
+      system("sync");
 			system("dpkg-deb --info /home/mks/armbian-update.deb | grep \"Version:\" > /home/mks/.DebVersion");
 			system("rm -rf /home/mks/armbian-update.deb");
 			system("reboot");
 		}
-    install_system_debs();
+    if(install_system_debs())
+    {
+      system("sync");
+      system("reboot");
+    }
     }
     
     return 0;
