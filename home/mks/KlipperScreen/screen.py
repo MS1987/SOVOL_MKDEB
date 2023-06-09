@@ -159,7 +159,10 @@ class KlipperScreen(Gtk.Window):
 
         self.initial_connection()
 
-
+    def ini_timezones_cityorarea_dic(self):
+        self.wizard.ini_timezones_cityorarea_dic()
+    def make_timezones_conf(self):
+        self.wizard.make_timezones_conf()
 
     def initial_connection(self):
         printers = self._config.get_printers()
@@ -703,7 +706,7 @@ class KlipperScreen(Gtk.Window):
         self.lang_ltr = set_text_direction(lang)
         self._config._create_configurable_options(self)
         self.reload_panels()
-        if True:
+        if self.wizard_bool == "True":
             self.remove(self.wizard.wizard_page_1)
             self.wizard = WizardPanel(self, title="wizard")
             self.add(self.wizard.wizard_page_1)
@@ -767,9 +770,6 @@ class KlipperScreen(Gtk.Window):
         GLib.idle_add(self.base_panel.process_update, *args)
         for x in self.subscriptions:
             GLib.idle_add(self.panels[x].process_update, *args)
-        if self.printer.get_cooldown_flag() and self.printer.get_current_extruder_temp() < 40:
-            self._ws.klippy.gcode_script("M106 S0")
-            self.printer.set_cooldown_flag(False)
 
     def _confirm_send_action(self, widget, text, method, params=None):
         buttons = [
