@@ -180,10 +180,11 @@ class MainPanel(MenuPanel):
 
     def change_target_temp(self, temp):
 
-        max_temp = int(float(self._printer.get_config_section(self.active_heater)['max_temp']))
+        max_temp = int(float(self._printer.get_config_section(self.active_heater)['max_temp'])) - 5
         if temp > max_temp:
             self._screen.show_popup_message(_("Can't set above the maximum:") + f' {max_temp}')
-            return
+            # return
+            temp = max_temp
         temp = max(temp, 0)
         name = self.active_heater.split()[1] if len(self.active_heater.split()) > 1 else self.active_heater
 

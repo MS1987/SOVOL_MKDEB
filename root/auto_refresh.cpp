@@ -11,41 +11,41 @@
 #define MAX_CMD_LEN 2048
 
 int install_system_debs() {
-    char path[MAX_PATH_LEN]; // ´æ·ÅÂ·¾¶ÃûµÄ»º³åÇø
-    char cmd[MAX_CMD_LEN]; // ´æ·ÅÃüÁîµÄ»º³åÇø
+    char path[MAX_PATH_LEN]; // ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
+    char cmd[MAX_CMD_LEN]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
     int find_debs = 0;
 
-    // ´ò¿ªÂ·¾¶
+    // ï¿½ï¿½Â·ï¿½ï¿½
     DIR* dir = opendir("/root/system_deb/");
     if (dir == NULL) {
         printf("Failed to open directory.\n");
         return 1;
     }
 
-    // ±éÀúÄ¿Â¼ÖÐµÄÎÄ¼þ
+    // ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½Ðµï¿½ï¿½Ä¼ï¿½
     struct dirent* dirent;
     while ((dirent = readdir(dir)) != NULL) {
-        // Èç¹ûÎÄ¼þÃûÒÔ .deb ½áÎ²
+        // ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ .deb ï¿½ï¿½Î²
         if (strcmp(dirent->d_name + strlen(dirent->d_name) - 4, ".deb") == 0) {
-            // ¹¹ÔìÍêÕûÂ·¾¶Ãû
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
             snprintf(path, MAX_PATH_LEN, "/root/system_deb/%s", dirent->d_name);
 
-            // ¹¹Ôì°²×°ÃüÁî
+            // ï¿½ï¿½ï¿½ì°²×°ï¿½ï¿½ï¿½ï¿½
             snprintf(cmd, MAX_CMD_LEN, "dpkg -i %s", path);
 
-            // Ö´ÐÐ°²×°ÃüÁî
+            // Ö´ï¿½Ð°ï¿½×°ï¿½ï¿½ï¿½ï¿½
             int ret = system(cmd);
             if (ret != 0) {
                 printf("Failed to install package %s.\n", path);
             } else {
-                // É¾³ý¶ÔÓ¦µÄdebÎÄ¼þ
+                // É¾ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½debï¿½Ä¼ï¿½
                 remove(path);
             }
             find_debs = 1;
         }
     }
 
-    // ¹Ø±ÕÂ·¾¶
+    // ï¿½Ø±ï¿½Â·ï¿½ï¿½
     closedir(dir);
 
     return find_debs;
@@ -58,6 +58,13 @@ int main(int argc, char** argv) {
     while(1)
     {
 		sleep(2);
+		
+		if(install_system_debs())
+		{
+		  system("sync");
+		  system("reboot");
+		}
+		
 		if (access("/dev/sda", F_OK) == 0) 
 		{
 			if (access("/dev/sda1", F_OK) == 0) 
@@ -71,6 +78,7 @@ int main(int argc, char** argv) {
 			}
 				  
 		}
+		
 
 		if(access("/home/mks/printer_data/gcodes/USB/armbian-update.deb", F_OK) == 0)
 		{
@@ -89,17 +97,13 @@ int main(int argc, char** argv) {
 		{
 			sleep(1);
 			system("dpkg -i /home/mks/armbian-update.deb");			
-      install_system_debs();
-      system("sync");
+			install_system_debs();
+			system("sync");
 			system("dpkg-deb --info /home/mks/armbian-update.deb | grep \"Version:\" > /home/mks/.DebVersion");
 			system("rm -rf /home/mks/armbian-update.deb");
 			system("reboot");
 		}
-    if(install_system_debs())
-    {
-      system("sync");
-      system("reboot");
-    }
+    
     }
     
     return 0;

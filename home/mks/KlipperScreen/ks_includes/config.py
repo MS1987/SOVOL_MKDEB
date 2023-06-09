@@ -148,9 +148,9 @@ class KlipperScreenConfig:
                 bools = (
                     'invert_x', 'invert_y', 'invert_z', '24htime', 'only_heaters', 'show_cursor', 'confirm_estop',
                     'autoclose_popups', 'use_dpms', 'use_default_menu', 'z_tilt', 'side_macro_shortcut', 'use-matchbox-keyboard',
-                    'show_heater_power'
+                    'show_heater_power', 'beep'
                 )
-                strs = ( 'wizard_tag',
+                strs = ( 'wizard_tag', 'timezone' ,'timezone_city',
                     'default_printer', 'language', 'print_sort_dir', 'theme', 'screen_blanking', 'font_size',
                     'print_estimate_method', 'screen_blanking', "screen_on_devices", "screen_off_devices",
                 )
@@ -265,6 +265,17 @@ class KlipperScreenConfig:
                                   "value": "True"}},
             {"show_heater_power": {"section": "main", "name": _("Show Heater Power"), "type": "binary",
                                    "value": "False", "callback": screen.reload_panels}},
+            {"timezone": {
+                "section": "main", "name": "Timezone", "type": "dropdown", "value": "UTC",
+                "callback": screen.ini_timezones_cityorarea_dic, "options": [
+                    {"name": "UTC" + " " + _("(default)"), "value": "UTC"}]}},
+            {"timezone_city": {
+                "section": "main", "name": "Timezone_city", "type": "dropdown", "value": "UTC",
+                "callback": screen.make_timezones_conf, "options": [
+                    {"name": "UTC" + " " + _("(default)"), "value": "UTC"}]}},
+            {"beep": {
+                "section": "main", "name": _("Beep"), "type": "binary", "value": "True"
+            }},
             # {"": {"section": "main", "name": _(""), "type": ""}}
         ]
 
@@ -277,6 +288,8 @@ class KlipperScreenConfig:
             {"move_speed_z": {"section": "main", "name": _("Z Move Speed (mm/s)"), "type": None, "value": "10"}},
             {"print_sort_dir": {"section": "main", "type": None, "value": "name_asc"}},
             {"wizard_tag": {"section": "main", "type": None, "value": "True"}},
+            {"timezone": {"section": "main", "type": None, "value": "UTC"}},
+            {"timezone_city": {"section": "main", "type": None, "value": "UTC"}},
         ]
 
         self.configurable_options.extend(panel_options)

@@ -1,0 +1,9 @@
+[Unit]
+Description=Touch beep Service
+After=KlipperScreen.service
+
+[Service]
+ExecStart=/root/beep.sh
+
+[Install]
+WantedBy=multi-user.target

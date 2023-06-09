@@ -1,8 +1,9 @@
 Package: Sovol-deb-update
-Version: 1.0.12
+Version: 1.0.13
 Architecture: arm64
 Uploaders: sovol
 Maintainer: sovol
 Section: devel
 Essential: no
-Description: 1. Change kernel driver to remove pwrkey,install the kernel deb from the auto_fresh
+Description: 1. Add timezone
+  2.Add beep

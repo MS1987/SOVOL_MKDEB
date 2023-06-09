@@ -68,7 +68,7 @@ class TemperaturePanel(ScreenPanel):
     def create_right_panel(self):
         cooldown = self._gtk.Button('cool-down', _('Cooldown'), "color4", self.bts, Gtk.PositionType.LEFT, 1)
         adjust = self._gtk.Button('fine-tune', None, "color3", self.bts * 1.4, Gtk.PositionType.LEFT, 1)
-        cooldown.connect("clicked", self.set_temperature, "cooldown")
+        cooldown.connect("clicked", self.set_cooldown, "cooldown")
         adjust.connect("clicked", self.switch_preheat_adjust)
 
         right = self._gtk.HomogeneousGrid()
@@ -153,7 +153,7 @@ class TemperaturePanel(ScreenPanel):
                 name = heater.split()[1] if len(heater.split()) > 1 else heater
                 if direction == "+":
                     target += int(self.tempdelta)
-                    max_temp = int(float(self._printer.get_config_section(heater)['max_temp']))
+                    max_temp = int(float(self._printer.get_config_section(heater)['max_temp'])) - 5
                     if target > max_temp:
                         target = max_temp
                         self._screen.show_popup_message(_("Can't set above the maximum:") + f' {target}')
@@ -232,7 +232,7 @@ class TemperaturePanel(ScreenPanel):
         else:
             for heater in self.active_heaters:
                 target = None
-                max_temp = float(self._printer.get_config_section(heater)['max_temp'])
+                max_temp = float(self._printer.get_config_section(heater)['max_temp']) - 5
                 name = heater.split()[1] if len(heater.split()) > 1 else heater
                 with contextlib.suppress(KeyError):
                     for i in self.preheat_options[setting]:
@@ -270,6 +270,43 @@ class TemperaturePanel(ScreenPanel):
             # This small delay is needed to properly update the target if the user configured something above
             # and then changed the target again using preheat gcode
             GLib.timeout_add(250, self.preheat_gcode, setting)
+
+    def set_cooldown(self, widget, setting):
+        if setting != "cooldown":
+            return
+
+        for heater in ['extruder', 'heater_bed']:
+            target = None
+            max_temp = float(self._printer.get_config_section(heater)['max_temp'])
+            name = heater.split()[1] if len(heater.split()) > 1 else heater
+            with contextlib.suppress(KeyError):
+                for i in self.preheat_options[setting]:
+                    logging.info(f"{self.preheat_options[setting]}")
+                    if i == name:
+                        target = selg.preheat_options[setting][name]
+                        logging.info(f"name match {name}")
+                    elif i == heater:
+                        target = self.preheat_options[setting][heater]
+                        logging.info(f"heater match {heater}")
+            if target is None and setting == "cooldown" and not heater.startswith("temperature_fan"):
+                target = 0
+            if heater.startswith('extruder'):
+                if self.validate(heater, target, max_temp):
+                    self._screen._ws.klippy.set_tool_temp(self._printer.get_tool_number(heater), target)
+            elif heater.startswith('heater_bed'):
+                if target is None:
+                    with contextlib.suppress(KeyError):
+                        target = self.preheat_options[setting]["bed"]
+                if self.validate(heater, target, max_temp):
+                    self._screen._ws.klippy.set_bed_temp(target)
+            elif heater.startswith('temperature_fan '):
+                if target is None:
+                    with contextlib.suppress(KeyError):
+                        target = self.preheat_options[setting]["temperature_fan"]
+                if self.validate(heater, target, max_temp):
+                    self._screen._ws.klippy.set_temp_fan_temp(name, target)
+            self._screen._ws.klippy.gcode_script("M106 S255")
+        self._printer.set_cooldown_flag(True)
 
     def validate(self, heater, target=None, max_temp=None):
         if target is not None and max_temp is not None:
@@ -402,10 +439,11 @@ class TemperaturePanel(ScreenPanel):
 
     def change_target_temp(self, temp):
         name = self.active_heater.split()[1] if len(self.active_heater.split()) > 1 else self.active_heater
-        max_temp = int(float(self._printer.get_config_section(self.active_heater)['max_temp']))
+        max_temp = int(float(self._printer.get_config_section(self.active_heater)['max_temp'])) - 5
         if temp > max_temp:
             self._screen.show_popup_message(_("Can't set above the maximum:") + f' {max_temp}')
-            return
+            # return
+            temp = max_temp
         temp = max(temp, 0)
 
         if self.active_heater.startswith('extruder'):
