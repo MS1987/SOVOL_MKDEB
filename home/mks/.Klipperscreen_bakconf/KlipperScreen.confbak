@@ -18,6 +18,7 @@ use_dpms = False
 #~# --- Do not edit below this line. This section is auto generated --- #~#
 #~#
 #~# [main]
-#~# 
-#~# wizard_tag = False
-#~# 
+#~# language = en
+#~# confirm_estop = True
+#~# wizard_tag = True
+#~#

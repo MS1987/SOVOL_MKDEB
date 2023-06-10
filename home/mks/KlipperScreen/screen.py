@@ -770,7 +770,7 @@ class KlipperScreen(Gtk.Window):
         GLib.idle_add(self.base_panel.process_update, *args)
         for x in self.subscriptions:
             GLib.idle_add(self.panels[x].process_update, *args)
-       if self.printer.get_cooldown_flag() and self.printer.get_current_extruder_temp() < 40:
+        if self.printer.get_cooldown_flag() and self.printer.get_current_extruder_temp() < 40:
             self._ws.klippy.gcode_script("M106 S0")
             self.printer.set_cooldown_flag(False)
 
