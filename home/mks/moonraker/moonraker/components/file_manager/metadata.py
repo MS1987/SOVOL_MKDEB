@@ -1103,6 +1103,7 @@ class Sovol3DCura(BaseSlicer):
 
             if item.startswith("; Sovol3D thumbnail begin"):
                 infos = self._regex_find_first(r"\d*x\d* \d*", item)
+                log_to_stderr(f"infos: {infos}")
                 flag = True
         
         preview_data = "".join(preview_list)
@@ -1247,6 +1248,8 @@ def process_objects(file_path: str, slicer: BaseSlicer, name: str) -> bool:
 def add_head_fan_offon_gcode(file_path: str, slicer: str):
     insert_list = ["\r\nSET_FAN_SPEED FAN=extruder_partfan SPEED=1;Klipper extruder part fan on\r\n", "\r\nSET_FAN_SPEED FAN=extruder_partfan SPEED=0;Klipper extruder part fan off\r\n"]
 
+    if gcode_data.find("SET_FAN_SPEED") > 0:
+        return
     if slicer in ["Sovol3D", "Cura"]:
         find_list = [";LAYER:1", "Turn-off fan"]
     elif slicer in ["PrusaSlicer", "SuperSlicer", "SliCR-3D", "BambuStudio", "A3dp-Slicer"]:
@@ -1393,13 +1396,13 @@ def main(path: str,
         log_to_stderr(traceback.format_exc())
         sys.exit(-1)
 
-    log_to_stderr(f"main slicer:{metadata['slicer']}")
+    # log_to_stderr(f"main slicer:{metadata['slicer']}")
 
-    try:
-        add_head_fan_offon_gcode(file_path, metadata['slicer'])
-    except:
-        log_to_stderr("not add head fan gcode")
-        pass
+    # try:
+    #     add_head_fan_offon_gcode(file_path, metadata['slicer'])
+    # except:
+    #     log_to_stderr("not add head fan gcode")
+    #     pass
 
     fd = sys.stdout.fileno()
     data = json.dumps(
