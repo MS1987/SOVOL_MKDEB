@@ -24,24 +24,5 @@ chmod 777 /home/mks/target_timezone.txt
 chgrp netdev /home/mks/ -R
 chown mks /home/mks/ -R
 
-<<<<<<< HEAD
-set -e
-
-# Pass maintainer script parameters to hook scripts
-export DEB_MAINT_PARAMS="$*"
-
-# Tell initramfs builder whether it's wanted
-export INITRD=Yes
-
-test -d /etc/kernel/postinst.d && run-parts --arg="5.16.20-rockchip64" --arg="/boot/vmlinuz-5.16.20-rockchip64" /etc/kernel/postinst.d
-
-ln -sf vmlinuz-5.16.20-rockchip64 /boot/Image 2> /dev/null || mv /boot/vmlinuz-5.16.20-rockchip64 /boot/Image
-touch /boot/.next
-exit 0
-
-
-=======
 systemctl enable makerbase-beep.service
 systemctl enable makerbase-timezone-monitor.service
->>>>>>> a1c6d3e52c3ab1488f25501bdb35deb28541f497
-
