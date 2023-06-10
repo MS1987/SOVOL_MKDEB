@@ -26,6 +26,9 @@ class Printer:
         self.busy_cb = None
         self.busy = None
         self.temperature_store_size = None
+        self.current_print_temp = 0
+        self.cooldown_flag = False
+        self.current_extruder_temp = 0
 
     def reset(self):
         self.config = None
@@ -45,6 +48,9 @@ class Printer:
         self.busy_cb = None
         self.busy = None
         self.temperature_store_size = None
+        self.current_print_temp = 0
+        self.cooldown_flag = False
+        self.current_extruder_temp = 0
 
     def reinit(self, printer_info, data):
         self.config = data['configfile']['config']
@@ -60,6 +66,9 @@ class Printer:
         if not self.store_timeout:
             self.store_timeout = GLib.timeout_add_seconds(1, self._update_temp_store)
         self.tempstore_size = 1200
+        self.current_print_temp = 0
+        self.cooldown_flag = False
+        self.current_extruder_temp = 0
 
         for x in self.config.keys():
             if x[:8] == "extruder":
@@ -318,6 +327,9 @@ class Printer:
     def get_tool_number(self, tool):
         return self.tools.index(tool)
 
+    def get_extruder_count(self):
+        return self.extrudercount
+
     def has_heated_bed(self):
         if "heater_bed" in self.devices:
             return True
@@ -357,4 +369,27 @@ class Printer:
                 if temp is None:
                     temp = 0
                 self.tempstore[device][x].append(temp)
+                self.current_extruder_temp = float(self.get_dev_stat("extruder", "temperatures"[:-1]))
         return True
+
+    def set_current_print_temp(self, temp):
+        if temp != self.current_print_temp:
+            self.current_print_temp = temp
+
+    def get_current_print_temp(self):
+        return self.current_print_temp
+
+    def set_cooldown_flag(self, status):
+        if status != self.cooldown_flag:
+            self.cooldown_flag = status
+
+    def get_cooldown_flag(self):
+        return self.cooldown_flag
+
+    def set_current_extruder_temp(self, value):
+        if value != self.current_extruder_temp:
+            self.current_extruder_temp = value
+
+    def get_current_extruder_temp(self):
+        return float(self.current_extruder_temp)
+

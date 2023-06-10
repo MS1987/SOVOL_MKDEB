@@ -30,8 +30,6 @@ class SettingsPanel(ScreenPanel):
             #logging.debug(f"这里是开始：{option}")
             name = list(option)[0]
             #logging.debug(f"这里是关键:{name}")
-            if(name == "timezone") or (name == "timezone_city"):
-                continue
             self.add_option('settings', self.settings, name, option[name])
 
         self.labels['printers_menu'] = self._gtk.ScrolledWindow()

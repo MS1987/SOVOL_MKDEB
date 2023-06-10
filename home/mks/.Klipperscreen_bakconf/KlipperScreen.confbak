@@ -9,6 +9,7 @@ extruder = 220
 
 [preheat cooldown]
 gcode: M106 S255
+
 [main]
 confirm_estop = True
 language = en
@@ -21,4 +22,3 @@ use_dpms = False
 #~# confirm_estop = True
 #~# wizard_tag = True
 #~#
-

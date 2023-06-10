@@ -3,6 +3,9 @@ import os
 import gi
 import netifaces
 
+# import pytz
+import subprocess
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import GLib, Gtk, Pango
 from signal import SIGTERM
@@ -17,7 +20,49 @@ class WizardPanel(ScreenPanel):
     keyboard_widget = None
     def __init__(self, screen, title):
         super().__init__(screen, title)
+        self.timezones_cityorarea_dic = {
+            'section': 'main', 
+            'name': 'Timezone_city', 
+            'type': 'dropdown', 
+            'value': 'UTC', 
+            'callback': self.make_timezones_conf, 
+            'options': [
+                {'name': 'UTC', 'value': 'UTC'}]}
         self.show_wizard_1()
+
+    def ini_timezones_dic(self):
+        timezones_dic = {
+            'section': 'main', 
+            'name': 'Timezones', 
+            'type': 'dropdown', 
+            'value': 'UTC', 
+            'callback': self.ini_timezones_cityorarea_dic, 
+            'options': [
+                {'name': 'UTC', 'value': 'UTC'}, 
+                {'name': 'Africa', 'value': 'Africa'}, 
+                {'name': 'America', 'value': 'America'}, 
+                {'name': 'Antarctica', 'value': 'Antarctica'}, 
+                {'name': 'Arctic', 'value': 'Arctic'}, 
+                {'name': 'Asia', 'value': 'Asia'}, 
+                {'name': 'Atlantic', 'value': 'Atlantic'}, 
+                {'name': 'Australia', 'value': 'Australia'}, 
+                {'name': 'Europe', 'value': 'Europe'}, 
+                {'name': 'Indian', 'value': 'Indian'}, 
+                {'name': 'Pacific', 'value': 'Pacific'}]}
+        return timezones_dic
+        
+
+    def make_timezones_conf(self, tz_setup):
+        self._screen._config.set("main", "timezone", self.timezone_set)#先随便写一个
+        self._screen._config.set("main", "timezone_city", tz_setup)
+        target = self.timezone_set + "/" + tz_setup
+        logging.info("target:" + str(target))
+        self.set_linux_timezone(target)
+
+    def set_linux_timezone(self, target_tz):
+        # 将目标时区写入文件
+        with open('/home/mks/target_timezone.txt', 'w') as f:
+            f.write(target_tz)
 
     def ini_language_dic(self):
         options = self._config.get_configurable_options().copy()
@@ -26,7 +71,7 @@ class WizardPanel(ScreenPanel):
                 languages = option['language']
         return languages
 
-    def show_wizard_1(self):
+    def show_wizard_1(self):#总高度860
         self.blank = Gtk.Box()
         self.blank.set_size_request(480, 60)
 
@@ -69,9 +114,8 @@ class WizardPanel(ScreenPanel):
 
 
         languages = self.ini_language_dic()
+        logging.debug(f"lang_dic:{languages}")
         self.language_menu = Gtk.ComboBoxText()
-        #self.language_menu.set_markup("<span font='DejaVu Sans-bold 28'>ENGLISH</span>")
-        #self.language_menu.set_hexpand(True)
         for key,value in enumerate(languages['options']):
             self.language_menu.append(value['value'], value['name'])
             if value['value'] == self._config.get_config()[languages['section']].get('language', languages['value']):
@@ -93,6 +137,119 @@ class WizardPanel(ScreenPanel):
         self.wizard_page_1.attach(self.wizard_1_title, 1, 1, 1, 1)
         self.wizard_page_1.attach(self.language, 0, 2, 2, 1)
         self.wizard_page_1.attach(self.wizard_1_next, 0, 3, 2, 1)
+
+    def setup_timezones(self):
+        self.blank = Gtk.Box()
+        self.blank.set_size_request(480, 60)
+
+        self.setup_timezones_lbl = Gtk.Label()
+        self.setup_timezones_lbl.set_hexpand(True)
+        self.setup_timezones_lbl.set_halign(Gtk.Align.CENTER)
+        title = "Setup Timezone"
+        self.setup_timezones_lbl.set_markup("<span font='DejaVu Sans-bold 33'>{}</span>".format(title))
+        self.setup_timezones_title = Gtk.Box()
+        self.setup_timezones_title.set_size_request(480, 80)
+        self.setup_timezones_title.set_valign(Gtk.Align.END)
+        self.setup_timezones_title.add(self.setup_timezones_lbl)
+
+        self.timezones_lbl = Gtk.Label()
+        self.timezones_lbl.set_hexpand(True)
+        self.timezones_lbl.set_halign(Gtk.Align.CENTER)
+        timezone_title = "Your Timezone"
+        self.timezones_lbl.set_markup("<span font='DejaVu Sans-bold 20'>{}</span>".format(timezone_title))
+        self.timezones_box = Gtk.Box()
+        self.timezones_box.set_size_request(480, 80)
+        self.timezones_box.set_valign(Gtk.Align.END)
+        self.timezones_box.add(self.timezones_lbl)
+
+        timezones_dic = self.ini_timezones_dic()
+        #logging.debug(f"tz_dic:{timezones_dic}")
+        self.timezones_menu = Gtk.ComboBoxText()
+        for key,value in enumerate(timezones_dic['options']):
+            self.timezones_menu.append(value['value'], value['name'])
+            if value['value'] == self._config.get_config()[timezones_dic['section']].get('timezone', timezones_dic['value']):
+                self.timezones_menu.set_active(key)
+        self.timezones_menu.connect("changed", self.on_dropdown_change, timezones_dic['section'], 'timezone', timezones_dic['callback'])
+        self.timezones_menu.set_entry_text_column(0)
+        self.timezones_menu.set_size_request(440, 80)
+        self.timezones_menu.set_halign(Gtk.Align.CENTER)
+        self.timezones_menu.set_valign(Gtk.Align.START)
+        self.timezones = Gtk.Box()
+        self.timezones.set_halign(Gtk.Align.CENTER)
+        self.timezones.pack_start(self.timezones_menu, False, False, 15)
+        self.timezones.set_size_request(480, 190)
+        self.timezones.add(self.timezones_menu)
+
+        self.timezones_city_lbl = Gtk.Label()
+        self.timezones_city_lbl.set_hexpand(True)
+        self.timezones_city_lbl.set_halign(Gtk.Align.CENTER)
+        tz_city_title = "The City or AREA"
+        self.timezones_city_lbl.set_markup("<span font='DejaVu Sans-bold 20'>{}</span>".format(tz_city_title))
+        self.timezones_city_box = Gtk.Box()
+        self.timezones_city_box.set_size_request(480, 80)
+        self.timezones_city_box.set_valign(Gtk.Align.END)
+        self.timezones_city_box.add(self.timezones_city_lbl)
+
+        #logging.debug(f"tz_c_dic:{self.timezones_cityorarea_dic}")
+        self.timezone_city_menu = Gtk.ComboBoxText()
+        for key,value in enumerate(self.timezones_cityorarea_dic['options']):
+            self.timezone_city_menu.append(value['value'], value['name'])
+            if value['value'] == self._config.get_config()[self.timezones_cityorarea_dic['section']].get('timezone_city', self.timezones_cityorarea_dic['value']):
+                self.timezone_city_menu.set_active(key)
+        self.timezone_city_menu.connect("changed", self.on_dropdown_change, self.timezones_cityorarea_dic['section'], 'timezone_city', self.timezones_cityorarea_dic['callback'])
+        # self.timezone_city_menu.set_entry_text_column(0)
+        self.timezone_city_menu.set_size_request(440, 80)
+        self.timezone_city_menu.set_wrap_width(3)
+        # self.timezone_city_menu.set_popdown_width(120)
+        # self.timezone_city_menu.set_size_request(440, -1)
+        self.timezone_city_menu.set_halign(Gtk.Align.CENTER)
+        self.timezone_city_menu.set_valign(Gtk.Align.START)
+        # self.scrolled_window = Gtk.ScrolledWindow()
+        # self.scrolled_window.set_size_request(440, 80)
+        # self.scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        # self.scrolled_window.set_halign(Gtk.Align.CENTER)
+        # self.scrolled_window.add(self.timezone_city_menu)
+        
+        self.timezones_city = Gtk.Box()
+        self.timezones_city.set_halign(Gtk.Align.CENTER)
+        self.timezones_city.pack_start(self.timezone_city_menu, False, False, 15)
+        self.timezones_city.set_size_request(480, 190)
+        # self.timezones_city.add(self.scrolled_window)
+
+        self.setup_tz_nex = self._gtk.Button("arrow-right",_("Next"), f"color2")
+        self.setup_tz_nex.connect("clicked", self.setup_timezones_next)
+        self.setup_tz_nex.set_size_request(210, 110)
+        self.setup_tz_next = Gtk.Box()
+        self.setup_tz_next.set_halign(Gtk.Align.CENTER)
+        self.setup_tz_next.set_valign(Gtk.Align.CENTER)
+        self.setup_tz_next.pack_start(self.setup_tz_nex, False, False, 0)
+        self.setup_tz_next.set_size_request(240, 110)
+        self.setup_tz_next.add(self.setup_tz_nex)
+
+        self.setup_tz_bac = self._gtk.Button("arrow-left",_("Back"), f"color1")
+        self.setup_tz_bac.connect("clicked", self.setup_timezones_back)
+        self.setup_tz_bac.set_size_request(210, 110)
+        self.setup_tz_back = Gtk.Box()
+        self.setup_tz_back.set_halign(Gtk.Align.CENTER)
+        self.setup_tz_back.set_valign(Gtk.Align.CENTER)
+        self.setup_tz_back.pack_start(self.setup_tz_bac, False, False, 0)
+        self.setup_tz_back.set_size_request(240, 110)
+        self.setup_tz_back.add(self.setup_tz_bac)
+
+        self.wizard_setup_timezones = Gtk.Grid()
+        self.wizard_setup_timezones.attach(self.blank, 0, 0, 2, 1)
+        self.wizard_setup_timezones.attach(self.setup_timezones_title, 0, 1, 2, 1)
+        self.wizard_setup_timezones.attach(self.timezones_box, 0, 2, 2, 1)
+        self.wizard_setup_timezones.attach(self.timezones, 0, 3, 2, 1)
+        self.wizard_setup_timezones.attach(self.timezones_city, 0, 4, 2, 1)
+        # self.wizard_setup_timezones.attach(self.timezones_city, 0, 5, 2, 1)
+        
+        # self.wizard_setup_timezones.attach(self.scrolled_window, 0, 5, 2, 1)
+        # self.wizard_setup_timezones.attach(self.timezones_menu, 0, 5, 2, 1)
+        self.wizard_setup_timezones.attach(self.setup_tz_back, 0, 6, 1, 1)
+        self.wizard_setup_timezones.attach(self.setup_tz_next, 1, 6, 1, 1)
+        self._screen.add(self._screen.wizard.wizard_setup_timezones)
+        self._screen.show_all()
 
     def show_wizard_2(self):
         self.blank = Gtk.Box()
@@ -290,13 +447,21 @@ class WizardPanel(ScreenPanel):
 
     def first_next(self, widget):
         self._screen.remove(self.wizard_page_1)
+        self.setup_timezones()
+
+    def setup_timezones_back(self, widget):
+        self._screen.remove(self.wizard_setup_timezones)
+        self.show_wizard_1()
+        self._screen.add(self._screen.wizard.wizard_page_1)
+        self._screen.show_all()
+
+    def setup_timezones_next(self, widget):
+        self._screen.remove(self.wizard_setup_timezones)
         self.show_wizard_2()
 
     def second_back(self,widget):
         self._screen.remove(self.wizard_page_2)
-        self.show_wizard_1()
-        self._screen.add(self._screen.wizard.wizard_page_1)
-        self._screen.show_all()
+        self.setup_timezones()
 
     def second_next(self,widget):
         self._screen.remove(self.wizard_page_2)
@@ -305,8 +470,6 @@ class WizardPanel(ScreenPanel):
     def leave_wifi_page(self,widget):
         self._screen.remove(self.box)
         self.show_wizard_2()
-        self._screen.add(self._screen.wizard.wizard_page_1)
-        self._screen.show_all()
 
     def third_back(self,widget):
         self._screen.remove(self.wizard_page_3)
@@ -959,3 +1122,22 @@ class WizardPanel(ScreenPanel):
             self.set_pallet(3)
         else:
             Gtk.Entry.do_insert_at_cursor(self.entry, key)
+    
+    def ini_timezones_cityorarea_dic(self,timezone):
+        self.timezone_set = timezone
+        timezones_to_city = {
+            'Africa': [{'name': 'Abidjan', 'value': 'Abidjan'}, {'name': 'Accra', 'value': 'Accra'}, {'name': 'Addis_Ababa', 'value': 'Addis_Ababa'}, {'name': 'Algiers', 'value': 'Algiers'}, {'name': 'Asmara', 'value': 'Asmara'}, {'name': 'Bamako', 'value': 'Bamako'}, {'name': 'Bangui', 'value': 'Bangui'}, {'name': 'Banjul', 'value': 'Banjul'}, {'name': 'Bissau', 'value': 'Bissau'}, {'name': 'Blantyre', 'value': 'Blantyre'}, {'name': 'Brazzaville', 'value': 'Brazzaville'}, {'name': 'Bujumbura', 'value': 'Bujumbura'}, {'name': 'Cairo', 'value': 'Cairo'}, {'name': 'Casablanca', 'value': 'Casablanca'}, {'name': 'Ceuta', 'value': 'Ceuta'}, {'name': 'Conakry', 'value': 'Conakry'}, {'name': 'Dakar', 'value': 'Dakar'}, {'name': 'Dar_es_Salaam', 'value': 'Dar_es_Salaam'}, {'name': 'Djibouti', 'value': 'Djibouti'}, {'name': 'Douala', 'value': 'Douala'}, {'name': 'El_Aaiun', 'value': 'El_Aaiun'}, {'name': 'Freetown', 'value': 'Freetown'}, {'name': 'Gaborone', 'value': 'Gaborone'}, {'name': 'Harare', 'value': 'Harare'}, {'name': 'Johannesburg', 'value': 'Johannesburg'}, {'name': 'Juba', 'value': 'Juba'}, {'name': 'Kampala', 'value': 'Kampala'}, {'name': 'Khartoum', 'value': 'Khartoum'}, {'name': 'Kigali', 'value': 'Kigali'}, {'name': 'Kinshasa', 'value': 'Kinshasa'}, {'name': 'Lagos', 'value': 'Lagos'}, {'name': 'Libreville', 'value': 'Libreville'}, {'name': 'Lome', 'value': 'Lome'}, {'name': 'Luanda', 'value': 'Luanda'}, {'name': 'Lubumbashi', 'value': 'Lubumbashi'}, {'name': 'Lusaka', 'value': 'Lusaka'}, {'name': 'Malabo', 'value': 'Malabo'}, {'name': 'Maputo', 'value': 'Maputo'}, {'name': 'Maseru', 'value': 'Maseru'}, {'name': 'Mbabane', 'value': 'Mbabane'}, {'name': 'Mogadishu', 'value': 'Mogadishu'}, {'name': 'Monrovia', 'value': 'Monrovia'}, {'name': 'Nairobi', 'value': 'Nairobi'}, {'name': 'Ndjamena', 'value': 'Ndjamena'}, {'name': 'Niamey', 'value': 'Niamey'}, {'name': 'Nouakchott', 'value': 'Nouakchott'}, {'name': 'Ouagadougou', 'value': 'Ouagadougou'}, {'name': 'Porto-Novo', 'value': 'Porto-Novo'}, {'name': 'Sao_Tome', 'value': 'Sao_Tome'}, {'name': 'Tripoli', 'value': 'Tripoli'}, {'name': 'Tunis', 'value': 'Tunis'}, {'name': 'Windhoek', 'value': 'Windhoek'}], 
+            'America': [{'name': 'Anchorage', 'value': 'Anchorage'}, {'name': 'Dawson', 'value': 'Dawson'}, {'name': 'LosAngeles', 'value': 'Los_Angeles'}, {'name': 'Chicago', 'value': 'Chicago'}, {'name': 'MexicoCity', 'value': 'Mexico_City'}, {'name': 'NewYork', 'value': 'New_York'}, {'name': 'Toronto', 'value': 'Toronto'}, {'name': 'Bogota', 'value': 'Bogota'}, {'name': 'Lima', 'value': 'Lima'}, {'name': 'Caracas', 'value': 'Caracas'}, {'name': 'Anchorage', 'value': 'Anchorage'}, {'name': 'Anguilla', 'value': 'Anguilla'}, {'name': 'Antigua', 'value': 'Antigua'}, {'name': 'Araguaina', 'value': 'Araguaina'}, {'name': 'BuenosAires', 'value': 'Argentina/Buenos_Aires'}, {'name': 'Santiago', 'value': 'Santiago'}, {'name': 'SaoPaulo', 'value': 'Sao_Paulo'}],
+            'Antarctica': [{'name': 'Casey', 'value': 'Casey'}, {'name': 'Davis', 'value': 'Davis'}, {'name': 'DumontDUrville', 'value': 'DumontDUrville'}, {'name': 'Macquarie', 'value': 'Macquarie'}, {'name': 'Mawson', 'value': 'Mawson'}, {'name': 'McMurdo', 'value': 'McMurdo'}, {'name': 'Palmer', 'value': 'Palmer'}, {'name': 'Rothera', 'value': 'Rothera'}, {'name': 'Syowa', 'value': 'Syowa'}, {'name': 'Troll', 'value': 'Troll'}, {'name': 'Vostok', 'value': 'Vostok'}], 
+            'Arctic': [{'name': 'Longyearbyen', 'value': 'Longyearbyen'}], 
+            'Asia': [{'name': 'Aden', 'value': 'Aden'}, {'name': 'Almaty', 'value': 'Almaty'}, {'name': 'Amman', 'value': 'Amman'}, {'name': 'Anadyr', 'value': 'Anadyr'}, {'name': 'Aqtau', 'value': 'Aqtau'}, {'name': 'Aqtobe', 'value': 'Aqtobe'}, {'name': 'Ashgabat', 'value': 'Ashgabat'}, {'name': 'Atyrau', 'value': 'Atyrau'}, {'name': 'Baghdad', 'value': 'Baghdad'}, {'name': 'Bahrain', 'value': 'Bahrain'}, {'name': 'Baku', 'value': 'Baku'}, {'name': 'Bangkok', 'value': 'Bangkok'}, {'name': 'Barnaul', 'value': 'Barnaul'}, {'name': 'Beirut', 'value': 'Beirut'}, {'name': 'Bishkek', 'value': 'Bishkek'}, {'name': 'Brunei', 'value': 'Brunei'}, {'name': 'Chita', 'value': 'Chita'}, {'name': 'Colombo', 'value': 'Colombo'}, {'name': 'Damascus', 'value': 'Damascus'}, {'name': 'Dhaka', 'value': 'Dhaka'}, {'name': 'Dili', 'value': 'Dili'}, {'name': 'Dubai', 'value': 'Dubai'}, {'name': 'Dushanbe', 'value': 'Dushanbe'}, {'name': 'Gaza', 'value': 'Gaza'}, {'name': 'Hebron', 'value': 'Hebron'}, {'name': 'Hong_Kong', 'value': 'Hong_Kong'}, {'name': 'Hovd', 'value': 'Hovd'}, {'name': 'Irkutsk', 'value': 'Irkutsk'}, {'name': 'Jerusalem', 'value': 'Jerusalem'}, {'name': 'Kabul', 'value': 'Kabul'}, {'name': 'Karachi', 'value': 'Karachi'}, {'name': 'Kuching', 'value': 'Kuching'}, {'name': 'Kuwait', 'value': 'Kuwait'}, {'name': 'Macau', 'value': 'Macau'}, {'name': 'Muscat', 'value': 'Muscat'}, {'name': 'Nicosia', 'value': 'Nicosia'}, {'name': 'Omsk', 'value': 'Omsk'}, {'name': 'Oral', 'value': 'Oral'}, {'name': 'Phnom_Penh', 'value': 'Phnom_Penh'}, {'name': 'Pontianak', 'value': 'Pontianak'}, {'name': 'Qatar', 'value': 'Qatar'}, {'name': 'Riyadh', 'value': 'Riyadh'}, {'name': 'Sakhalin', 'value': 'Sakhalin'}, {'name': 'Seoul', 'value': 'Seoul'}, {'name': 'Shanghai', 'value': 'Shanghai'}, {'name': 'Singapore', 'value': 'Singapore'}, {'name': 'Tashkent', 'value': 'Tashkent'}, {'name': 'Tbilisi', 'value': 'Tbilisi'}, {'name': 'Tehran', 'value': 'Tehran'}, {'name': 'Thimphu', 'value': 'Thimphu'}, {'name': 'Tokyo', 'value': 'Tokyo'}, {'name': 'Tomsk', 'value': 'Tomsk'}, {'name': 'Ust-Nera', 'value': 'Ust-Nera'}, {'name': 'Yakutsk', 'value': 'Yakutsk'}, {'name': 'Yangon', 'value': 'Yangon'}], 
+            'Atlantic': [{'name': 'Azores', 'value': 'Azores'}, {'name': 'Bermuda', 'value': 'Bermuda'}, {'name': 'Canary', 'value': 'Canary'}, {'name': 'Cape_Verde', 'value': 'Cape_Verde'}, {'name': 'Faroe', 'value': 'Faroe'}, {'name': 'Madeira', 'value': 'Madeira'}, {'name': 'Reykjavik', 'value': 'Reykjavik'}, {'name': 'South_Georgia', 'value': 'South_Georgia'}, {'name': 'St_Helena', 'value': 'St_Helena'}, {'name': 'Stanley', 'value': 'Stanley'}], 
+            'Australia': [{'name': 'Adelaide', 'value': 'Adelaide'}, {'name': 'Brisbane', 'value': 'Brisbane'}, {'name': 'Broken_Hill', 'value': 'Broken_Hill'}, {'name': 'Darwin', 'value': 'Darwin'}, {'name': 'Eucla', 'value': 'Eucla'}, {'name': 'Hobart', 'value': 'Hobart'}, {'name': 'Lindeman', 'value': 'Lindeman'}, {'name': 'Lord_Howe', 'value': 'Lord_Howe'}, {'name': 'Melbourne', 'value': 'Melbourne'}, {'name': 'Perth', 'value': 'Perth'}, {'name': 'Sydney', 'value': 'Sydney'}], 
+            'Europe': [{'name': 'Amsterdam', 'value': 'Amsterdam'}, {'name': 'Andorra', 'value': 'Andorra'}, {'name': 'Astrakhan', 'value': 'Astrakhan'}, {'name': 'Athens', 'value': 'Athens'}, {'name': 'Belgrade', 'value': 'Belgrade'}, {'name': 'Berlin', 'value': 'Berlin'}, {'name': 'Bratislava', 'value': 'Bratislava'}, {'name': 'Brussels', 'value': 'Brussels'}, {'name': 'Bucharest', 'value': 'Bucharest'}, {'name': 'Budapest', 'value': 'Budapest'}, {'name': 'Busingen', 'value': 'Busingen'}, {'name': 'Chisinau', 'value': 'Chisinau'}, {'name': 'Copenhagen', 'value': 'Copenhagen'}, {'name': 'Dublin', 'value': 'Dublin'}, {'name': 'Gibraltar', 'value': 'Gibraltar'}, {'name': 'Guernsey', 'value': 'Guernsey'}, {'name': 'Helsinki', 'value': 'Helsinki'}, {'name': 'Isle_of_Man', 'value': 'Isle_of_Man'}, {'name': 'Istanbul', 'value': 'Istanbul'}, {'name': 'Jersey', 'value': 'Jersey'}, {'name': 'Kaliningrad', 'value': 'Kaliningrad'}, {'name': 'Kiev', 'value': 'Kiev'}, {'name': 'Kirov', 'value': 'Kirov'}, {'name': 'Lisbon', 'value': 'Lisbon'}, {'name': 'Ljubljana', 'value': 'Ljubljana'}, {'name': 'London', 'value': 'London'}, {'name': 'Luxembourg', 'value': 'Luxembourg'}, {'name': 'Madrid', 'value': 'Madrid'}, {'name': 'Malta', 'value': 'Malta'}, {'name': 'Mariehamn', 'value': 'Mariehamn'}, {'name': 'Minsk', 'value': 'Minsk'}, {'name': 'Monaco', 'value': 'Monaco'}, {'name': 'Moscow', 'value': 'Moscow'}, {'name': 'Oslo', 'value': 'Oslo'}, {'name': 'Paris', 'value': 'Paris'}, {'name': 'Podgorica', 'value': 'Podgorica'}, {'name': 'Prague', 'value': 'Prague'}, {'name': 'Riga', 'value': 'Riga'}, {'name': 'Rome', 'value': 'Rome'}, {'name': 'Samara', 'value': 'Samara'}, {'name': 'San_Marino', 'value': 'San_Marino'}, {'name': 'Sarajevo', 'value': 'Sarajevo'}, {'name': 'Saratov', 'value': 'Saratov'}, {'name': 'Simferopol', 'value': 'Simferopol'}, {'name': 'Skopje', 'value': 'Skopje'}, {'name': 'Sofia', 'value': 'Sofia'}, {'name': 'Stockholm', 'value': 'Stockholm'}, {'name': 'Tallinn', 'value': 'Tallinn'}, {'name': 'Tirane', 'value': 'Tirane'}, {'name': 'Ulyanovsk', 'value': 'Ulyanovsk'}, {'name': 'Uzhgorod', 'value': 'Uzhgorod'}, {'name': 'Vaduz', 'value': 'Vaduz'}, {'name': 'Vatican', 'value': 'Vatican'}, {'name': 'Vienna', 'value': 'Vienna'}, {'name': 'Vilnius', 'value': 'Vilnius'}, {'name': 'Volgograd', 'value': 'Volgograd'}, {'name': 'Warsaw', 'value': 'Warsaw'}, {'name': 'Zagreb', 'value': 'Zagreb'}, {'name': 'Zaporozhye', 'value': 'Zaporozhye'}, {'name': 'Zurich', 'value': 'Zurich'}], 
+            'Indian': [{'name': 'Antananarivo', 'value': 'Antananarivo'}, {'name': 'Chagos', 'value': 'Chagos'}, {'name': 'Christmas', 'value': 'Christmas'}, {'name': 'Cocos', 'value': 'Cocos'}, {'name': 'Comoro', 'value': 'Comoro'}, {'name': 'Kerguelen', 'value': 'Kerguelen'}, {'name': 'Mahe', 'value': 'Mahe'}, {'name': 'Maldives', 'value': 'Maldives'}, {'name': 'Mauritius', 'value': 'Mauritius'}, {'name': 'Mayotte', 'value': 'Mayotte'}, {'name': 'Reunion', 'value': 'Reunion'}], 
+            'Pacific': [{'name': 'Apia', 'value': 'Apia'}, {'name': 'Auckland', 'value': 'Auckland'}, {'name': 'Bougainville', 'value': 'Bougainville'}, {'name': 'Chatham', 'value': 'Chatham'}, {'name': 'Chuuk', 'value': 'Chuuk'}, {'name': 'Easter', 'value': 'Easter'}, {'name': 'Efate', 'value': 'Efate'}, {'name': 'Enderbury', 'value': 'Enderbury'}, {'name': 'Fakaofo', 'value': 'Fakaofo'}, {'name': 'Fiji', 'value': 'Fiji'}, {'name': 'Funafuti', 'value': 'Funafuti'}, {'name': 'Galapagos', 'value': 'Galapagos'}, {'name': 'Gambier', 'value': 'Gambier'}, {'name': 'Guadalcanal', 'value': 'Guadalcanal'}, {'name': 'Guam', 'value': 'Guam'}, {'name': 'Honolulu', 'value': 'Honolulu'}, {'name': 'Kiritimati', 'value': 'Kiritimati'}, {'name': 'Kosrae', 'value': 'Kosrae'}, {'name': 'Kwajalein', 'value': 'Kwajalein'}, {'name': 'Majuro', 'value': 'Majuro'}, {'name': 'Marquesas', 'value': 'Marquesas'}, {'name': 'Midway', 'value': 'Midway'}, {'name': 'Nauru', 'value': 'Nauru'}, {'name': 'Niue', 'value': 'Niue'}, {'name': 'Norfolk', 'value': 'Norfolk'}, {'name': 'Noumea', 'value': 'Noumea'}, {'name': 'Pago_Pago', 'value': 'Pago_Pago'}, {'name': 'Palau', 'value': 'Palau'}, {'name': 'Pitcairn', 'value': 'Pitcairn'}, {'name': 'Pohnpei', 'value': 'Pohnpei'}, {'name': 'Port_Moresby', 'value': 'Port_Moresby'}, {'name': 'Rarotonga', 'value': 'Rarotonga'}, {'name': 'Saipan', 'value': 'Saipan'}, {'name': 'Tahiti', 'value': 'Tahiti'}, {'name': 'Tarawa', 'value': 'Tarawa'}, {'name': 'Tongatapu', 'value': 'Tongatapu'}, {'name': 'Wake', 'value': 'Wake'}, {'name': 'Wallis', 'value': 'Wallis'}], 
+            'UTC': [{'name': 'UTC', 'value': 'UTC'}]}
+        
+        self.timezones_cityorarea_dic['options'] = timezones_to_city[timezone]
+        self._screen.remove(self.wizard_setup_timezones)
+        self.setup_timezones()

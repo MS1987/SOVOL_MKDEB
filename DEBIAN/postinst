@@ -17,9 +17,14 @@ else
 fi
 
 chmod 777 /root/auto_refresh
+chmod 777 /root/beep.sh
+chmod 777 /root/set-timezone.sh
+chmod 777 /home/mks/target_timezone.txt
+
 chgrp netdev /home/mks/ -R
 chown mks /home/mks/ -R
 
+<<<<<<< HEAD
 set -e
 
 # Pass maintainer script parameters to hook scripts
@@ -35,4 +40,8 @@ touch /boot/.next
 exit 0
 
 
+=======
+systemctl enable makerbase-beep.service
+systemctl enable makerbase-timezone-monitor.service
+>>>>>>> a1c6d3e52c3ab1488f25501bdb35deb28541f497
 
