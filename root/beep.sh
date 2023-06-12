@@ -17,7 +17,7 @@ function beep() {
     # 设置GPIO管脚电平为高，触发蜂鸣器
     echo "1" > /sys/class/gpio/gpio$BEEP_GPIO/value
    # read -t 1  # 控制蜂鸣器响声持续时间，这里是0.1秒
-  sleep 0.1  # 控制蜂鸣器响声持续时间
+  sleep 0.005  # 控制蜂鸣器响声持续时间
 #   ./delay 100
 
     # 设置GPIO管脚电平为低，停止蜂鸣器
