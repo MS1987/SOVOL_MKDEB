@@ -77,7 +77,7 @@ class LEDPanel(ScreenPanel):
         self.labels['devices'].show_all()
 
         self.scale = Gtk.Scale.new_with_range(orientation=Gtk.Orientation.HORIZONTAL, min=0, max=100, step=1)
-        self.scale.set_value(0)
+        self.scale.set_value(self._printer.get_led_power())
         self.scale.set_digits(0)
         self.scale.set_hexpand(True)
         self.scale.set_has_origin(True)
@@ -100,5 +100,12 @@ class LEDPanel(ScreenPanel):
         print(f"command: {command}, {self.scale.get_value()}")
         if type(command) == str:
             self._screen._ws.klippy.gcode_script(command)
+            if command.endswith("0"):
+                self._printer.set_led_power(0)
+                self.scale.set_value(0)
+            elif command.endswith("1"):
+                self._printer.set_led_power(100)
+                self.scale.set_value(100)
         else:
             self._screen._ws.klippy.gcode_script(f"SET_PIN PIN=my_led VALUE={float(self.scale.get_value()) / 100}")
+            self._printer.set_led_power(self.scale.get_value())
