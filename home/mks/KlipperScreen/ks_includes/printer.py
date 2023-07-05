@@ -29,6 +29,7 @@ class Printer:
         self.current_print_temp = 0
         self.cooldown_flag = False
         self.current_extruder_temp = 0
+        self.led_power = 100
 
     def reset(self):
         self.config = None
@@ -51,6 +52,7 @@ class Printer:
         self.current_print_temp = 0
         self.cooldown_flag = False
         self.current_extruder_temp = 0
+        self.led_power = 100
 
     def reinit(self, printer_info, data):
         self.config = data['configfile']['config']
@@ -69,6 +71,7 @@ class Printer:
         self.current_print_temp = 0
         self.cooldown_flag = False
         self.current_extruder_temp = 0
+        self.led_power = 100
 
         for x in self.config.keys():
             if x[:8] == "extruder":
@@ -288,6 +291,12 @@ class Printer:
             if speed < off_below:
                 speed = 0
         return speed
+
+    def get_led_power(self):
+        return self.led_power
+
+    def set_led_power(self, value):
+        self.led_power = value
 
     def get_pin_value(self, pin):
         if pin in self.data:
