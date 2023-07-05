@@ -117,9 +117,9 @@ class InputShaperPanel(ScreenPanel):
         #    self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME)
         self.calibrating_axis = method
         if method == "x":
-            self._screen._ws.klippy.gcode_script('SHAPER_CALIBRATE AXIS=X')
+            self._screen._ws.klippy.gcode_script(f'{KlippyGcodes.HOME}\nSHAPER_CALIBRATE AXIS=X')
         if method == "y":
-            self._screen._ws.klippy.gcode_script('SHAPER_CALIBRATE AXIS=Y')
+            self._screen._ws.klippy.gcode_script(f'{KlippyGcodes.HOME}\nSHAPER_CALIBRATE AXIS=Y')
         if method == "both":
             self._screen._ws.klippy.gcode_script('SHAPER_CALIBRATE')
 
