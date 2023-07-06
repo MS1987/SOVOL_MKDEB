@@ -1,0 +1,32 @@
+[preheat PLA]
+bed = 50
+extruder = 210
+
+[preheat ABS]
+bed = 80
+extruder = 260
+
+[preheat PETG]
+bed = 80
+extruder = 240
+
+[preheat FLEX]
+bed = 0
+extruder = 210
+
+
+[preheat cooldown]
+gcode: M106 S255
+
+[main]
+confirm_estop = True
+language = en
+use_dpms = False
+
+#~# --- Do not edit below this line. This section is auto generated --- #~#
+#~#
+#~# [main]
+#~# language = en
+#~# confirm_estop = True
+#~# wizard_tag = True
+#~#

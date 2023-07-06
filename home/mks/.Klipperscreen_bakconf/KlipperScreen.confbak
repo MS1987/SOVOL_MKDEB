@@ -1,10 +1,10 @@
 [preheat PLA]
-bed = 40
-extruder = 195
+bed = 50
+extruder = 210
 
 [preheat ABS]
-bed = 90
-extruder = 220
+bed = 80
+extruder = 260
 
 
 [preheat cooldown]
