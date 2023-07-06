@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 18:17-0300\n"
-"PO-Revision-Date: 2023-05-16 14:37+0800\n"
+"PO-Revision-Date: 2023-06-15 17:14+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #, python-format
 msgid "%s will be updated to version"
@@ -838,6 +838,854 @@ msgstr "更新包已準備，是否進行更新？ 更新結束後系統將會�
 
 msgid "Please wait for a reboot while the update package is installed..."
 msgstr "安裝更新包中，請等待重啓..."
+
+msgid "Sound"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Abnormal interruption of printing is detected, whether to resume"
+msgstr ""
+
+# 时区
+msgid "UTC"
+msgstr ""
+
+# # Africa
+msgid "Africa"
+msgstr ""
+
+msgid "Abidjan"
+msgstr ""
+
+msgid "Accra"
+msgstr ""
+
+msgid "Addis_Ababa"
+msgstr ""
+
+msgid "Algiers"
+msgstr ""
+
+msgid "Asmara"
+msgstr ""
+
+msgid "Bamako"
+msgstr ""
+
+msgid "Bangui"
+msgstr ""
+
+msgid "Banjul"
+msgstr ""
+
+msgid "Bissau"
+msgstr ""
+
+msgid "Blantyre"
+msgstr ""
+
+msgid "Brazzaville"
+msgstr ""
+
+msgid "Bujumbura"
+msgstr ""
+
+msgid "Cairo"
+msgstr ""
+
+msgid "Casablanca"
+msgstr ""
+
+msgid "Ceuta"
+msgstr ""
+
+msgid "Conakry"
+msgstr ""
+
+msgid "Dakar"
+msgstr ""
+
+msgid "Dar_es_Salaam"
+msgstr ""
+
+msgid "Djibouti"
+msgstr ""
+
+msgid "Douala"
+msgstr ""
+
+msgid "El_Aaiun"
+msgstr ""
+
+msgid "Freetown"
+msgstr ""
+
+msgid "Gaborone"
+msgstr ""
+
+msgid "Harare"
+msgstr ""
+
+msgid "Johannesburg"
+msgstr ""
+
+msgid "Juba"
+msgstr ""
+
+msgid "Kampala"
+msgstr ""
+
+msgid "Khartoum"
+msgstr ""
+
+msgid "Kigali"
+msgstr ""
+
+msgid "Kinshasa"
+msgstr ""
+
+msgid "Lagos"
+msgstr ""
+
+msgid "Libreville"
+msgstr ""
+
+msgid "Lome"
+msgstr ""
+
+msgid "Luanda"
+msgstr ""
+
+msgid "Lubumbashi"
+msgstr ""
+
+msgid "Lusaka"
+msgstr ""
+
+msgid "Malabo"
+msgstr ""
+
+msgid "Maputo"
+msgstr ""
+
+msgid "Maseru"
+msgstr ""
+
+msgid "Mbabane"
+msgstr ""
+
+msgid "Mogadishu"
+msgstr ""
+
+msgid "Monrovia"
+msgstr ""
+
+msgid "Nairobi"
+msgstr ""
+
+msgid "Ndjamena"
+msgstr ""
+
+msgid "Niamey"
+msgstr ""
+
+msgid "Nouakchott"
+msgstr ""
+
+msgid "Ouagadougou"
+msgstr ""
+
+msgid "Porto-Novo"
+msgstr ""
+
+msgid "Sao_Tome"
+msgstr ""
+
+msgid "Tripoli"
+msgstr ""
+
+msgid "Tunis"
+msgstr ""
+
+msgid "Windhoek"
+msgstr ""
+
+# # America
+msgid "America"
+msgstr ""
+
+msgid "Anchorage"
+msgstr ""
+
+msgid "Dawson"
+msgstr ""
+
+msgid "Los_Angeles"
+msgstr ""
+
+msgid "Chicago"
+msgstr ""
+
+msgid "Mexico_City"
+msgstr ""
+
+msgid "New_York"
+msgstr ""
+
+msgid "Toronto"
+msgstr ""
+
+msgid "Bogota"
+msgstr ""
+
+msgid "Lima"
+msgstr ""
+
+msgid "Caracas"
+msgstr ""
+
+msgid "Anguilla"
+msgstr ""
+
+msgid "Antigua"
+msgstr ""
+
+msgid "Araguaina"
+msgstr ""
+
+msgid "Argentina/Buenos_Aires"
+msgstr ""
+
+msgid "Santiago"
+msgstr ""
+
+msgid "Sao_Paulo"
+msgstr ""
+
+# # Antarctica
+msgid "Antarctica"
+msgstr ""
+
+msgid "Casey"
+msgstr ""
+
+msgid "Davis"
+msgstr ""
+
+msgid "DumontDUrville"
+msgstr ""
+
+msgid "Macquarie"
+msgstr ""
+
+msgid "Mawson"
+msgstr ""
+
+msgid "McMurdo"
+msgstr ""
+
+msgid "Palmer"
+msgstr ""
+
+msgid "Rothera"
+msgstr ""
+
+msgid "Syowa"
+msgstr ""
+
+msgid "Troll"
+msgstr ""
+
+msgid "Vostok"
+msgstr ""
+
+# # Arctic
+msgid "Arctic"
+msgstr ""
+
+msgid "Longyearbyen"
+msgstr ""
+
+# # Asia
+msgid "Asia"
+msgstr ""
+
+msgid "Aden"
+msgstr ""
+
+msgid "Almaty"
+msgstr ""
+
+msgid "Amman"
+msgstr ""
+
+msgid "Anadyr"
+msgstr ""
+
+msgid "Aqtau"
+msgstr ""
+
+msgid "Aqtobe"
+msgstr ""
+
+msgid "Ashgabat"
+msgstr ""
+
+msgid "Atyrau"
+msgstr ""
+
+msgid "Baghdad"
+msgstr ""
+
+msgid "Bahrain"
+msgstr ""
+
+msgid "Baku"
+msgstr ""
+
+msgid "Bangkok"
+msgstr ""
+
+msgid "Barnaul"
+msgstr ""
+
+msgid "Beirut"
+msgstr ""
+
+msgid "Bishkek"
+msgstr ""
+
+msgid "Brunei"
+msgstr ""
+
+msgid "Chita"
+msgstr ""
+
+msgid "Colombo"
+msgstr "可倫坡"
+
+msgid "Damascus"
+msgstr "大馬士革"
+
+msgid "Dhaka"
+msgstr "達卡"
+
+msgid "Dili"
+msgstr "帝力"
+
+msgid "Dubai"
+msgstr "迪拜"
+
+msgid "Dushanbe"
+msgstr "杜尚別"
+
+msgid "Gaza"
+msgstr "加沙"
+
+msgid "Hebron"
+msgstr "希伯倫"
+
+msgid "Hong_Kong"
+msgstr "香港特區政府"
+
+msgid "Hovd"
+msgstr "郝維德"
+
+msgid "Irkutsk"
+msgstr "伊爾庫茨克"
+
+msgid "Jerusalem"
+msgstr "撒冷"
+
+msgid "Kabul"
+msgstr "喀布爾"
+
+msgid "Karachi"
+msgstr "卡拉奇"
+
+msgid "Kuching"
+msgstr "古晉"
+
+msgid "Kuwait"
+msgstr "科威特"
+
+msgid "Macau"
+msgstr "澳門"
+
+msgid "Muscat"
+msgstr "馬斯喀特"
+
+msgid "Nicosia"
+msgstr "尼科西亞"
+
+msgid "Omsk"
+msgstr "鄂木斯克"
+
+msgid "Oral"
+msgstr "哈薩克"
+
+msgid "Phnom_Penh"
+msgstr "金邊"
+
+msgid "Pontianak"
+msgstr "坤甸"
+
+msgid "Qatar"
+msgstr "卡達"
+
+msgid "Riyadh"
+msgstr "利雅德"
+
+msgid "Sakhalin"
+msgstr "薩哈林島"
+
+msgid "Seoul"
+msgstr "首爾"
+
+msgid "Shanghai"
+msgstr "上海"
+
+msgid "Singapore"
+msgstr "新加坡"
+
+msgid "Tashkent"
+msgstr "塔什庫爾干"
+
+msgid "Tbilisi"
+msgstr "第比利斯"
+
+msgid "Tehran"
+msgstr "特拉赫蘭"
+
+msgid "Thimphu"
+msgstr "廷布"
+
+msgid "Tokyo"
+msgstr "東京"
+
+msgid "Tomsk"
+msgstr "托木斯克"
+
+msgid "Ust-Nera"
+msgstr "努斯特-內拉"
+
+msgid "Yakutsk"
+msgstr "雅庫茨克"
+
+msgid "Yangon"
+msgstr "仰光市"
+
+# # Atlantic
+msgid "Atlantic"
+msgstr "大洋洲"
+
+msgid "Azores"
+msgstr "亞速爾群島"
+
+msgid "Bermuda"
+msgstr "百慕達地區"
+
+msgid "Canary"
+msgstr "西班牙"
+
+msgid "Cape_Verde"
+msgstr "卡普_維德"
+
+msgid "Faroe"
+msgstr "法羅群島"
+
+msgid "Madeira"
+msgstr "馬德拉群島"
+
+msgid "Reykjavik"
+msgstr "雷克雅維克"
+
+msgid "South_Georgia"
+msgstr "喬治亞州南部"
+
+msgid "St_Helena"
+msgstr "聖赫勒拿島"
+
+msgid "Stanley"
+msgstr "斯坦利"
+
+# # Australia
+msgid "Australia"
+msgstr "澳大利亞"
+
+msgid "Adelaide"
+msgstr "阿德雷德"
+
+msgid "Brisbane"
+msgstr "布裡斯班"
+
+msgid "Broken_Hill"
+msgstr "布羅肯山"
+
+msgid "Darwin"
+msgstr "達爾文"
+
+msgid "Eucla"
+msgstr "歐拉"
+
+msgid "Hobart"
+msgstr "霍巴特"
+
+msgid "Lindeman"
+msgstr "林德曼"
+
+msgid "Lord_Howe"
+msgstr "羅德豪維島"
+
+msgid "Melbourne"
+msgstr "墨爾本"
+
+msgid "Perth"
+msgstr "珀斯市"
+
+msgid "Sydney"
+msgstr "悉尼"
+
+# # Europe
+msgid "Europe"
+msgstr "歐洲"
+
+msgid "Amsterdam"
+msgstr "阿姆斯特丹市"
+
+msgid "Andorra"
+msgstr "安道爾共和國"
+
+msgid "Astrakhan"
+msgstr "阿斯特拉罕市"
+
+msgid "Athens"
+msgstr "雅典"
+
+msgid "Belgrade"
+msgstr "貝爾格勒市"
+
+msgid "Berlin"
+msgstr "柏林"
+
+msgid "Bratislava"
+msgstr "布拉迪斯拉伐"
+
+msgid "Brussels"
+msgstr "布魯塞爾"
+
+msgid "Bucharest"
+msgstr "布加勒斯特市"
+
+msgid "Budapest"
+msgstr "布達佩斯"
+
+msgid "Busingen"
+msgstr "布辛根"
+
+msgid "Chisinau"
+msgstr "基希訥烏市"
+
+msgid "Copenhagen"
+msgstr "哥本哈根"
+
+msgid "Dublin"
+msgstr "都柏林市"
+
+msgid "Gibraltar"
+msgstr "直布羅陀"
+
+msgid "Guernsey"
+msgstr "格恩西島"
+
+msgid "Helsinki"
+msgstr "赫爾辛基市"
+
+msgid "Isle_of_Man"
+msgstr "曼島"
+
+msgid "Istanbul"
+msgstr "伊斯坦布爾"
+
+msgid "Jersey"
+msgstr "澤西島"
+
+msgid "Kaliningrad"
+msgstr "加里寧格勒市"
+
+msgid "Kiev"
+msgstr "基輔市"
+
+msgid "Kirov"
+msgstr "基洛夫市"
+
+msgid "Lisbon"
+msgstr "裡斯本市"
+
+msgid "Ljubljana"
+msgstr "盧布爾雅那市"
+
+msgid "London"
+msgstr "倫敦"
+
+msgid "Luxembourg"
+msgstr "盧森堡"
+
+msgid "Madrid"
+msgstr "馬德里"
+
+msgid "Malta"
+msgstr "馬爾他共和國"
+
+msgid "Mariehamn"
+msgstr "瑪麗-哈姆"
+
+msgid "Minsk"
+msgstr "明斯克市"
+
+msgid "Monaco"
+msgstr "摩納哥"
+
+msgid "Moscow"
+msgstr "莫斯科市"
+
+msgid "Oslo"
+msgstr "奧斯陸"
+
+msgid "Paris"
+msgstr "巴黎"
+
+msgid "Podgorica"
+msgstr "波德戈里察市"
+
+msgid "Prague"
+msgstr "布拉格市"
+
+msgid "Riga"
+msgstr "里加"
+
+msgid "Rome"
+msgstr "羅馬"
+
+msgid "Samara"
+msgstr "薩瑪拉"
+
+msgid "San_Marino"
+msgstr "聖馬利諾"
+
+msgid "Sarajevo"
+msgstr "薩拉耶佛市"
+
+msgid "Saratov"
+msgstr "薩拉托夫市"
+
+msgid "Simferopol"
+msgstr "辛菲羅波爾"
+
+msgid "Skopje"
+msgstr "斯高彼里"
+
+msgid "Sofia"
+msgstr "索菲亞"
+
+msgid "Stockholm"
+msgstr "斯德哥爾摩市"
+
+msgid "Tallinn"
+msgstr "塔林市"
+
+msgid "Tirane"
+msgstr "蒂拉納"
+
+msgid "Ulyanovsk"
+msgstr "烏里揚諾夫斯克市"
+
+msgid "Uzhgorod"
+msgstr "烏日哥羅德"
+
+msgid "Vaduz"
+msgstr "瓦杜茲市"
+
+msgid "Vatican"
+msgstr "梵蒂岡"
+
+msgid "Vienna"
+msgstr "維也納"
+
+msgid "Vilnius"
+msgstr "維爾紐斯市"
+
+msgid "Volgograd"
+msgstr "伏爾加格勒市"
+
+msgid "Warsaw"
+msgstr "華沙"
+
+msgid "Zagreb"
+msgstr "薩格勒布市"
+
+msgid "Zaporozhye"
+msgstr "扎波羅熱市"
+
+msgid "Zurich"
+msgstr "蘇黎世"
+
+# # Indian
+msgid "Indian"
+msgstr "印度"
+
+msgid "Antananarivo"
+msgstr "塔那那利佛"
+
+msgid "Chagos"
+msgstr "查戈斯群島"
+
+msgid "Christmas"
+msgstr "聖誕"
+
+msgid "Cocos"
+msgstr "科科斯群島"
+
+msgid "Comoro"
+msgstr "科摩羅"
+
+msgid "Kerguelen"
+msgstr "凱爾蓋倫"
+
+msgid "Mahe"
+msgstr "馬河"
+
+msgid "Maldives"
+msgstr "瑪律地夫"
+
+msgid "Mauritius"
+msgstr "毛里求斯"
+
+msgid "Mayotte"
+msgstr "馬約特島"
+
+msgid "Reunion"
+msgstr "留尼汪（島）"
+
+# # Pacific
+msgid "Pacific"
+msgstr "太平洋地區"
+
+msgid "Apia"
+msgstr "阿皮亞"
+
+msgid "Auckland"
+msgstr "奧克蘭"
+
+msgid "Bougainville"
+msgstr "布幹維爾島"
+
+msgid "Chatham"
+msgstr "恰特姆市"
+
+msgid "Chuuk"
+msgstr "丘克島"
+
+msgid "Easter"
+msgstr "東部地區"
+
+msgid "Efate"
+msgstr "埃法特島"
+
+msgid "Enderbury"
+msgstr "埃德爾伯里"
+
+msgid "Fakaofo"
+msgstr "法考福"
+
+msgid "Fiji"
+msgstr "斐濟共和國"
+
+msgid "Funafuti"
+msgstr "富納富提島"
+
+msgid "Galapagos"
+msgstr "加拉帕戈斯群島"
+
+msgid "Gambier"
+msgstr "甘比爾"
+
+msgid "Guadalcanal"
+msgstr "瓜達爾卡納爾島"
+
+msgid "Guam"
+msgstr "關島"
+
+msgid "Honolulu"
+msgstr "檀香山"
+
+msgid "Kiritimati"
+msgstr "鳶尾島"
+
+msgid "Kosrae"
+msgstr "科斯雷島"
+
+msgid "Kwajalein"
+msgstr "誇賈林島"
+
+msgid "Majuro"
+msgstr "馬祖羅"
+
+msgid "Marquesas"
+msgstr "馬克薩斯島"
+
+msgid "Midway"
+msgstr "中途島"
+
+msgid "Nauru"
+msgstr "瑙魯"
+
+msgid "Niue"
+msgstr "紐埃島"
+
+msgid "Norfolk"
+msgstr "諾福克市"
+
+msgid "Noumea"
+msgstr "努美亞"
+
+msgid "Pago_Pago"
+msgstr "帕果"
+
+msgid "Palau"
+msgstr "帕勞群島"
+
+msgid "Pitcairn"
+msgstr "皮特凱恩島"
+
+msgid "Pohnpei"
+msgstr "波納佩島"
+
+msgid "Port_Moresby"
+msgstr "莫裡斯比港"
+
+msgid "Rarotonga"
+msgstr "拉羅湯加島"
+
+msgid "Saipan"
+msgstr "塞班島"
+
+msgid "Tahiti"
+msgstr "塔希提島"
+
+msgid "Tarawa"
+msgstr "塔拉瓦島"
+
+msgid "Tongatapu"
+msgstr "湯加塔普島"
+
+msgid "Wake"
+msgstr "尾跡"
+
+msgid "Wallis"
+msgstr "瓦利斯"
 
 #~ msgid "Z+"
 #~ msgstr "Z+"

@@ -352,6 +352,7 @@ class JobStatusPanel(ScreenPanel):
     def activate(self):
         ps = self._printer.get_stat("print_stats")
         self.set_state(ps['state'])
+        self.job_info_check()
         if self.flow_timeout is None:
             self.flow_timeout = GLib.timeout_add_seconds(2, self.update_flow)
         self._screen.base_panel_show_all()
@@ -840,7 +841,7 @@ class JobStatusPanel(ScreenPanel):
             self._screen.files.add_file_callback(self._callback_metadata)
 
     def update_percent_complete(self):
-        if self.state not in ["printing", "paused"]:
+        if self.state not in ["printing", "paused", "complete"]:
             return
 
         if "gcode_start_byte" in self.file_metadata:
@@ -849,6 +850,8 @@ class JobStatusPanel(ScreenPanel):
                                                                           self.file_metadata['gcode_start_byte']))
         else:
             progress = self._printer.get_stat('virtual_sdcard', 'progress')
+        if self.state == "complete":
+            progress = 1
 
         if progress != self.progress:
             self.progress = progress

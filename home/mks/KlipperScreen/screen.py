@@ -705,8 +705,10 @@ class KlipperScreen(Gtk.Window):
         self._config.install_language(lang)
         self.lang_ltr = set_text_direction(lang)
         self._config._create_configurable_options(self)
-        self.reload_panels()
-        if self.wizard_bool == "True":
+        if self.wizard_bool == "False":
+            self.reload_panels()
+            os.system("systemctl restart KlipperScreen.service")
+        else:
             self.remove(self.wizard.wizard_page_1)
             self.wizard = WizardPanel(self, title="wizard")
             self.add(self.wizard.wizard_page_1)

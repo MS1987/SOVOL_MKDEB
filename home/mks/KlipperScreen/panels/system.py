@@ -55,7 +55,7 @@ class SystemPanel(ScreenPanel):
         self.refresh.connect("clicked", self.reset_cfg_button, "reset_cfg")
         self.refresh.set_vexpand(False)
 
-        reboot = self._gtk.Button('refresh', _('Restart'), 'color3')
+        reboot = self._gtk.Button('refresh', _('Reboot'), 'color3')
         reboot.connect("clicked", self.reboot_poweroff, "reboot")
         reboot.set_vexpand(False)
         shutdown = self._gtk.Button('shutdown', _('Shutdown'), 'color4')

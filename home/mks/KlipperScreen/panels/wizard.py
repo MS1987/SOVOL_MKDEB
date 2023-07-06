@@ -145,7 +145,7 @@ class WizardPanel(ScreenPanel):
         self.setup_timezones_lbl = Gtk.Label()
         self.setup_timezones_lbl.set_hexpand(True)
         self.setup_timezones_lbl.set_halign(Gtk.Align.CENTER)
-        title = "Setup Timezone"
+        title = _("Setup Timezone")
         self.setup_timezones_lbl.set_markup("<span font='DejaVu Sans-bold 33'>{}</span>".format(title))
         self.setup_timezones_title = Gtk.Box()
         self.setup_timezones_title.set_size_request(480, 80)
@@ -155,7 +155,7 @@ class WizardPanel(ScreenPanel):
         self.timezones_lbl = Gtk.Label()
         self.timezones_lbl.set_hexpand(True)
         self.timezones_lbl.set_halign(Gtk.Align.CENTER)
-        timezone_title = "Your Timezone"
+        timezone_title = _("Your Timezone")
         self.timezones_lbl.set_markup("<span font='DejaVu Sans-bold 20'>{}</span>".format(timezone_title))
         self.timezones_box = Gtk.Box()
         self.timezones_box.set_size_request(480, 80)
@@ -166,7 +166,7 @@ class WizardPanel(ScreenPanel):
         #logging.debug(f"tz_dic:{timezones_dic}")
         self.timezones_menu = Gtk.ComboBoxText()
         for key,value in enumerate(timezones_dic['options']):
-            self.timezones_menu.append(value['value'], value['name'])
+            self.timezones_menu.append(value['value'], _(value['name']))
             if value['value'] == self._config.get_config()[timezones_dic['section']].get('timezone', timezones_dic['value']):
                 self.timezones_menu.set_active(key)
         self.timezones_menu.connect("changed", self.on_dropdown_change, timezones_dic['section'], 'timezone', timezones_dic['callback'])
@@ -183,7 +183,7 @@ class WizardPanel(ScreenPanel):
         self.timezones_city_lbl = Gtk.Label()
         self.timezones_city_lbl.set_hexpand(True)
         self.timezones_city_lbl.set_halign(Gtk.Align.CENTER)
-        tz_city_title = "The City or AREA"
+        tz_city_title = _("The City or AREA")
         self.timezones_city_lbl.set_markup("<span font='DejaVu Sans-bold 20'>{}</span>".format(tz_city_title))
         self.timezones_city_box = Gtk.Box()
         self.timezones_city_box.set_size_request(480, 80)
@@ -193,7 +193,7 @@ class WizardPanel(ScreenPanel):
         #logging.debug(f"tz_c_dic:{self.timezones_cityorarea_dic}")
         self.timezone_city_menu = Gtk.ComboBoxText()
         for key,value in enumerate(self.timezones_cityorarea_dic['options']):
-            self.timezone_city_menu.append(value['value'], value['name'])
+            self.timezone_city_menu.append(value['value'], _(value['name']))
             if value['value'] == self._config.get_config()[self.timezones_cityorarea_dic['section']].get('timezone_city', self.timezones_cityorarea_dic['value']):
                 self.timezone_city_menu.set_active(key)
         self.timezone_city_menu.connect("changed", self.on_dropdown_change, self.timezones_cityorarea_dic['section'], 'timezone_city', self.timezones_cityorarea_dic['callback'])
@@ -486,6 +486,7 @@ class WizardPanel(ScreenPanel):
         self._screen.remove(self.wizard_page_3)
         self._screen.add(self._screen.base_panel.main_grid)
         self._screen.show_all()
+        os.system("systemctl restart KlipperScreen.service")
 
     def show_network(self,widget):
         self._screen.remove(self.wizard_page_2)

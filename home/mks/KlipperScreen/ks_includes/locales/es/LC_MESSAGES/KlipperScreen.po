@@ -848,6 +848,864 @@ msgstr ""
 msgid "Please wait for a reboot while the update package is installed..."
 msgstr "Espere a que se reinicie mientras se instala el paquete de actualización..."
 
+
+msgid "Sound"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Abnormal interruption of printing is detected, whether to resume"
+msgstr ""
+
+# 时区
+msgid "UTC"
+msgstr ""
+
+## Africa
+msgid "Africa"
+msgstr ""
+
+msgid "Abidjan"
+msgstr ""
+
+msgid "Accra"
+msgstr ""
+
+msgid "Addis_Ababa"
+msgstr ""
+
+msgid "Algiers"
+msgstr ""
+
+msgid "Asmara" 
+msgstr ""
+
+msgid "Bamako" 
+msgstr ""
+
+msgid "Bangui" 
+msgstr ""
+
+msgid "Banjul" 
+msgstr ""
+
+msgid "Bissau" 
+msgstr ""
+
+msgid "Blantyre" 
+msgstr ""
+
+msgid "Brazzaville" 
+msgstr ""
+
+msgid "Bujumbura" 
+msgstr ""
+
+msgid "Cairo" 
+msgstr ""
+
+msgid "Casablanca" 
+msgstr ""
+
+msgid "Ceuta" 
+msgstr ""
+
+msgid "Conakry" 
+msgstr ""
+
+msgid "Dakar"
+msgstr ""
+
+msgid "Dar_es_Salaam" 
+msgstr ""
+
+msgid "Djibouti" 
+msgstr ""
+
+msgid "Douala"
+msgstr ""
+
+msgid "El_Aaiun" 
+msgstr ""
+
+msgid "Freetown" 
+msgstr ""
+
+msgid "Gaborone" 
+msgstr ""
+
+msgid "Harare" 
+msgstr ""
+
+msgid "Johannesburg" 
+msgstr ""
+
+msgid "Juba" 
+msgstr ""
+
+msgid "Kampala" 
+msgstr ""
+
+msgid "Khartoum" 
+msgstr ""
+
+msgid "Kigali" 
+msgstr ""
+
+msgid "Kinshasa" 
+msgstr ""
+
+msgid "Lagos" 
+msgstr ""
+
+msgid "Libreville" 
+msgstr ""
+
+msgid "Lome" 
+msgstr ""
+
+msgid "Luanda" 
+msgstr ""
+
+msgid "Lubumbashi" 
+msgstr ""
+
+msgid "Lusaka" 
+msgstr ""
+
+msgid "Malabo" 
+msgstr ""
+
+msgid "Maputo" 
+msgstr ""
+
+msgid "Maseru" 
+msgstr ""
+
+msgid "Mbabane" 
+msgstr ""
+
+msgid "Mogadishu"
+msgstr ""
+
+msgid "Monrovia" 
+msgstr ""
+
+msgid "Nairobi" 
+msgstr ""
+
+msgid "Ndjamena" 
+msgstr ""
+
+msgid "Niamey" 
+msgstr ""
+
+msgid "Nouakchott" 
+msgstr ""
+
+msgid "Ouagadougou"
+msgstr ""
+
+msgid "Porto-Novo"
+msgstr ""
+
+msgid "Sao_Tome" 
+msgstr ""
+
+msgid "Tripoli" 
+msgstr ""
+
+msgid "Tunis" 
+msgstr ""
+
+msgid "Windhoek"
+msgstr ""
+
+
+## America
+msgid "America"
+msgstr ""
+
+msgid "Dawson" 
+msgstr ""
+
+msgid "Los_Angeles" 
+msgstr ""
+
+msgid "Chicago" 
+msgstr ""
+
+msgid "Mexico_City" 
+msgstr ""
+
+msgid "New_York" 
+msgstr ""
+
+msgid "Toronto" 
+msgstr ""
+
+msgid "Bogota"
+msgstr ""
+
+msgid "Lima" 
+msgstr ""
+
+msgid "Caracas" 
+msgstr ""
+
+msgid "Anchorage" 
+msgstr ""
+
+msgid "Anguilla" 
+msgstr ""
+
+msgid "Antigua" 
+msgstr ""
+
+msgid "Araguaina" 
+msgstr ""
+
+msgid "Argentina/Buenos_Aires" 
+msgstr ""
+
+msgid "Santiago" 
+msgstr ""
+
+msgid "Sao_Paulo"
+msgstr ""
+
+
+## Antarctica
+msgid "Antarctica"
+msgstr ""
+
+msgid "Casey" 
+msgstr ""
+
+msgid "Davis" 
+msgstr ""
+
+msgid "DumontDUrville" 
+msgstr ""
+
+msgid "Macquarie" 
+msgstr ""
+
+msgid "Mawson" 
+msgstr ""
+
+msgid "McMurdo" 
+msgstr ""
+
+msgid "Palmer" 
+msgstr ""
+
+msgid "Rothera" 
+msgstr ""
+
+msgid "Syowa" 
+msgstr ""
+
+msgid "Troll" 
+msgstr ""
+
+msgid "Vostok" 
+msgstr ""
+
+
+## Arctic
+msgid "Arctic"
+msgstr ""
+
+msgid "Longyearbyen"
+msgstr ""
+
+## Asia
+msgid "Asia"
+msgstr ""
+
+msgid "Aden"
+msgstr ""
+
+msgid "Almaty" 
+msgstr ""
+
+msgid "Amman" 
+msgstr ""
+
+msgid "Anadyr" 
+msgstr ""
+
+msgid "Aqtau" 
+msgstr ""
+
+msgid "Aqtobe" 
+msgstr ""
+
+msgid "Ashgabat" 
+msgstr ""
+
+msgid "Atyrau" 
+msgstr ""
+
+msgid "Baghdad" 
+msgstr ""
+
+msgid "Bahrain" 
+msgstr ""
+
+msgid "Baku" 
+msgstr ""
+
+msgid "Bangkok" 
+msgstr ""
+
+msgid "Barnaul" 
+msgstr ""
+
+msgid "Beirut" 
+msgstr ""
+
+msgid "Bishkek" 
+msgstr ""
+
+msgid "Brunei" 
+msgstr ""
+
+msgid "Chita" 
+msgstr ""
+
+msgid "Colombo" 
+msgstr ""
+
+msgid "Damascus" 
+msgstr ""
+
+msgid "Dhaka" 
+msgstr ""
+
+msgid "Dili" 
+msgstr ""
+
+msgid "Dubai" 
+msgstr ""
+
+msgid "Dushanbe" 
+msgstr ""
+
+msgid "Gaza" 
+msgstr ""
+
+msgid "Hebron"
+msgstr ""
+
+msgid "Hong_Kong" 
+msgstr ""
+
+msgid "Hovd" 
+msgstr ""
+
+msgid "Irkutsk" 
+msgstr ""
+
+msgid "Jerusalem" 
+msgstr ""
+
+msgid "Kabul" 
+msgstr ""
+
+msgid "Karachi" 
+msgstr ""
+
+msgid "Kuching" 
+msgstr ""
+
+msgid "Kuwait" 
+msgstr ""
+
+msgid "Macau" 
+msgstr ""
+
+msgid "Muscat" 
+msgstr ""
+
+msgid "Nicosia" 
+msgstr ""
+
+msgid "Omsk" 
+msgstr ""
+
+msgid "Oral" 
+msgstr ""
+
+msgid "Phnom_Penh" 
+msgstr ""
+
+msgid "Pontianak" 
+msgstr ""
+
+msgid "Qatar" 
+msgstr ""
+
+msgid "Riyadh" 
+msgstr ""
+
+msgid "Sakhalin" 
+msgstr ""
+
+msgid "Seoul" 
+msgstr ""
+
+msgid "Shanghai" 
+msgstr ""
+
+msgid "Singapore" 
+msgstr ""
+
+msgid "Tashkent" 
+msgstr ""
+
+msgid "Tbilisi" 
+msgstr ""
+
+msgid "Tehran" 
+msgstr ""
+
+msgid "Thimphu" 
+msgstr ""
+
+msgid "Tokyo" 
+msgstr ""
+
+msgid "Tomsk"
+msgstr ""
+
+msgid "Ust-Nera" 
+msgstr ""
+
+msgid "Yakutsk" 
+msgstr ""
+
+msgid "Yangon" 
+msgstr ""
+
+## Atlantic
+msgid "Atlantic"
+msgstr ""
+
+msgid "Azores" 
+msgstr ""
+
+msgid "Bermuda" 
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "Cape_Verde" 
+msgstr ""
+
+msgid "Faroe" 
+msgstr ""
+
+msgid "Madeira" 
+msgstr ""
+
+msgid "Reykjavik" 
+msgstr ""
+
+msgid "South_Georgia" 
+msgstr ""
+
+msgid "St_Helena" 
+msgstr ""
+
+msgid "Stanley"
+msgstr ""
+
+
+## Australia
+msgid "Australia"
+msgstr ""
+
+msgid "Adelaide" 
+msgstr ""
+
+msgid "Brisbane" 
+msgstr ""
+
+msgid "Broken_Hill" 
+msgstr ""
+
+msgid "Darwin" 
+msgstr ""
+
+msgid "Eucla" 
+msgstr ""
+
+msgid "Hobart" 
+msgstr ""
+
+msgid "Lindeman" 
+msgstr ""
+
+msgid "Lord_Howe" 
+msgstr ""
+
+msgid "Melbourne" 
+msgstr ""
+
+msgid "Perth" 
+msgstr ""
+
+msgid "Sydney"
+msgstr ""
+
+
+## Europe
+msgid "Europe"
+msgstr ""
+
+msgid "Amsterdam" 
+msgstr ""
+
+msgid "Andorra" 
+msgstr ""
+
+msgid "Astrakhan" 
+msgstr ""
+
+msgid "Athens" 
+msgstr ""
+
+msgid "Belgrade" 
+msgstr ""
+
+msgid "Berlin" 
+msgstr ""
+
+msgid "Bratislava" 
+msgstr ""
+
+msgid "Brussels" 
+msgstr ""
+
+msgid "Bucharest" 
+msgstr ""
+
+msgid "Budapest" 
+msgstr ""
+
+msgid "Busingen" 
+msgstr ""
+
+msgid "Chisinau" 
+msgstr ""
+
+msgid "Copenhagen" 
+msgstr ""
+
+msgid "Dublin" 
+msgstr ""
+
+msgid "Gibraltar" 
+msgstr ""
+
+msgid "Guernsey" 
+msgstr ""
+
+msgid "Helsinki" 
+msgstr ""
+
+msgid "Isle_of_Man" 
+msgstr ""
+
+msgid "Istanbul" 
+msgstr ""
+
+msgid "Jersey" 
+msgstr ""
+
+msgid "Kaliningrad" 
+msgstr ""
+
+msgid "Kiev" 
+msgstr ""
+
+msgid "Kirov" 
+msgstr ""
+
+msgid "Lisbon" 
+msgstr ""
+
+msgid "Ljubljana" 
+msgstr ""
+
+msgid "London" 
+msgstr ""
+
+msgid "Luxembourg" 
+msgstr ""
+
+msgid "Madrid" 
+msgstr ""
+
+msgid "Malta" 
+msgstr ""
+
+msgid "Mariehamn" 
+msgstr ""
+
+msgid "Minsk" 
+msgstr ""
+
+msgid "Monaco" 
+msgstr ""
+
+msgid "Moscow" 
+msgstr ""
+
+msgid "Oslo" 
+msgstr ""
+
+msgid "Paris" 
+msgstr ""
+
+msgid "Podgorica" 
+msgstr ""
+
+msgid "Prague" 
+msgstr ""
+
+msgid "Riga" 
+msgstr ""
+
+msgid "Rome" 
+msgstr ""
+
+msgid "Samara" 
+msgstr ""
+
+msgid "San_Marino" 
+msgstr ""
+
+msgid "Sarajevo" 
+msgstr ""
+
+msgid "Saratov" 
+msgstr ""
+
+msgid "Simferopol" 
+msgstr ""
+
+msgid "Skopje" 
+msgstr ""
+
+msgid "Sofia" 
+msgstr ""
+
+msgid "Stockholm" 
+msgstr ""
+
+msgid "Tallinn" 
+msgstr ""
+
+msgid "Tirane" 
+msgstr ""
+
+msgid "Ulyanovsk" 
+msgstr ""
+
+msgid "Uzhgorod" 
+msgstr ""
+
+msgid "Vaduz" 
+msgstr ""
+
+msgid "Vatican" 
+msgstr ""
+
+msgid "Vienna" 
+msgstr ""
+
+msgid "Vilnius" 
+msgstr ""
+
+msgid "Volgograd" 
+msgstr ""
+
+msgid "Warsaw" 
+msgstr ""
+
+msgid "Zagreb" 
+msgstr ""
+
+msgid "Zaporozhye" 
+msgstr ""
+
+msgid "Zurich"
+msgstr ""
+
+
+## Indian
+msgid "Indian"
+msgstr ""
+
+msgid "Antananarivo" 
+msgstr ""
+
+msgid "Chagos" 
+msgstr ""
+
+msgid "Christmas" 
+msgstr ""
+
+msgid "Cocos" 
+msgstr ""
+
+msgid "Comoro" 
+msgstr ""
+
+msgid "Kerguelen" 
+msgstr ""
+
+msgid "Mahe" 
+msgstr ""
+
+msgid "Maldives" 
+msgstr ""
+
+msgid "Mauritius" 
+msgstr ""
+
+msgid "Mayotte" 
+msgstr ""
+
+msgid "Reunion"
+msgstr ""
+
+
+## Pacific
+msgid "Pacific"
+msgstr ""
+
+msgid "Apia"
+msgstr ""
+
+msgid "Auckland" 
+msgstr ""
+
+msgid "Bougainville" 
+msgstr ""
+
+msgid "Chatham" 
+msgstr ""
+
+msgid "Chuuk" 
+msgstr ""
+
+msgid "Easter" 
+msgstr ""
+
+msgid "Efate" 
+msgstr ""
+
+msgid "Enderbury" 
+msgstr ""
+
+msgid "Fakaofo" 
+msgstr ""
+
+msgid "Fiji" 
+msgstr ""
+
+msgid "Funafuti" 
+msgstr ""
+
+msgid "Galapagos" 
+msgstr ""
+
+msgid "Gambier" 
+msgstr ""
+
+msgid "Guadalcanal" 
+msgstr ""
+
+msgid "Guam" 
+msgstr ""
+
+msgid "Honolulu" 
+msgstr ""
+
+msgid "Kiritimati" 
+msgstr ""
+
+msgid "Kosrae" 
+msgstr ""
+
+msgid "Kwajalein" 
+msgstr ""
+
+msgid "Majuro" 
+msgstr ""
+
+msgid "Marquesas" 
+msgstr ""
+
+msgid "Midway" 
+msgstr ""
+
+msgid "Nauru" 
+msgstr ""
+
+msgid "Niue" 
+msgstr ""
+
+msgid "Norfolk" 
+msgstr ""
+
+msgid "Noumea" 
+msgstr ""
+
+msgid "Pago_Pago" 
+msgstr ""
+
+msgid "Palau" 
+msgstr ""
+
+msgid "Pitcairn" 
+msgstr ""
+
+msgid "Pohnpei" 
+msgstr ""
+
+msgid "Port_Moresby" 
+msgstr ""
+
+msgid "Rarotonga" 
+msgstr ""
+
+msgid "Saipan" 
+msgstr ""
+
+msgid "Tahiti" 
+msgstr ""
+
+msgid "Tarawa" 
+msgstr ""
+
+msgid "Tongatapu" 
+msgstr ""
+
+msgid "Wake" 
+msgstr ""
+
+msgid "Wallis"
+msgstr ""
+
+
+
 #~ msgid "KlipperScreen will be restarted"
 #~ msgstr "KlipperScreen se reiniciará"
 

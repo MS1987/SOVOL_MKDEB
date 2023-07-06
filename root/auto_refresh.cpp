@@ -19,7 +19,7 @@ int install_system_debs() {
     DIR* dir = opendir("/root/system_deb/");
     if (dir == NULL) {
         printf("Failed to open directory.\n");
-        return 1;
+        return 0;
     }
 
     // ����Ŀ¼�е��ļ�
@@ -63,6 +63,15 @@ int main(int argc, char** argv) {
 		{
 		  system("sync");
 		  system("reboot");
+		}
+                if(access("/root/bootsplash.armbian", F_OK) == 0)
+		{
+			system("mv /root/bootsplash.armbian /usr/lib/firmware/ -f;update-initramfs -u");
+			sleep(2);
+			system("sync");
+			system("reboot");
+                        while(1)
+		        {sleep(2);}
 		}
 		
 		if (access("/dev/sda", F_OK) == 0) 

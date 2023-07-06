@@ -22,10 +22,15 @@ chmod 777 /root/set-timezone.sh
 chmod 777 /home/mks/target_timezone.txt
 
 
+chgrp netdev /home/mks/ -R
+chown mks /home/mks/ -R
+systemctl enable makerbase-beep.service
+systemctl enable makerbase-timezone-monitor.service
 if [ -f /home/mks/ustreamer-master.zip ]
 then 
     unzip -d /home/mks/ /home/mks/ustreamer-master.zip
-    cd /home/mks
+    cd /home/mks/ustreamer-master
+	sleep 2
     make
 fi
 
